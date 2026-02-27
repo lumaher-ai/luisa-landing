@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     type: "profile",
     title: "David Dominguez",
     description:
-      "CTO and AI Engineer building privacy-first intelligence tools. TypeScript, React, LLM routing, and agentic systems.",
+      "CTO and AI Engineer building privacy-first intelligence tools.",
     url: "https://daviddominguez.dev",
     siteName: "David Dominguez",
     locale: "en_US",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "David Dominguez",
     description:
-      "CTO and AI Engineer building privacy-first intelligence tools. TypeScript, React, LLM routing, and agentic systems.",
+      "CTO and AI Engineer building privacy-first intelligence tools.",
     images: ["/opengraph-image"],
   },
 };
@@ -72,7 +72,7 @@ export default function RootLayout({
               url: "https://daviddominguez.dev",
               sameAs: [
                 "https://github.com/daviddominguezh/",
-                "https://linkedin.com/in/daviddominguez",
+                "https://www.linkedin.com/in/daviddominguez",
               ],
               knowsAbout: [
                 "TypeScript",
