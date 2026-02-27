@@ -1,5 +1,3 @@
-import { LiveCounter } from "./live-counter";
-
 export function Navbar() {
   return (
     <nav
@@ -18,37 +16,13 @@ export function Navbar() {
         DAVID DOMINGUEZ
       </a>
 
-      <LiveCounter />
-
-      <div className="flex items-center gap-6">
-        <div className="hidden items-center gap-6 md:flex">
-          {["blog", "work", "signal"].map((link) => (
-            <a
-              key={link}
-              href={link === "blog" ? "/blog" : `#${link}`}
-              className="text-[13px] text-[var(--gray-7)] transition-colors duration-200 hover:text-[var(--gray-11)]"
-            >
-              {link}
-            </a>
-          ))}
-        </div>
-
-        {/* Theme toggle placeholder */}
-        <button
-          type="button"
-          aria-label="Toggle theme"
-          className="flex h-7 w-7 items-center justify-center active:scale-[0.96]"
-        >
-          <div
-            className="h-4 w-4 rounded-full"
-            style={{
-              background:
-                "linear-gradient(to right, var(--gray-12) 50%, transparent 50%)",
-              border: "1.5px solid var(--gray-12)",
-            }}
-          />
-        </button>
-      </div>
+      <a
+        href="/cv_david.pdf"
+        download
+        className="font-mono text-[11px] tracking-[0.06em] text-[var(--gray-7)] transition-colors duration-200 hover:text-[var(--gray-11)]"
+      >
+        Download CV
+      </a>
     </nav>
   );
 }

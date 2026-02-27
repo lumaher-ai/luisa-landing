@@ -88,7 +88,7 @@ export const PROJECTS: Project[] = [
     accentColor: "rgb(255, 210, 80)",
     signalType: "complex",
     link: "https://www.mercadolibre.com.mx/l/afiliados",
-    linkLabel: "mercadolibre.com",
+    linkLabel: "mercadolibre.com.mx/l/afiliados",
   },
   {
     name: "Credibanco POS",
