@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 interface SocialLink {
   label: string;
   href: string;
@@ -5,40 +7,81 @@ interface SocialLink {
 
 const SOCIALS: SocialLink[] = [
   { label: "GitHub", href: "https://github.com" },
+  { label: "X", href: "https://x.com" },
   { label: "LinkedIn", href: "https://linkedin.com" },
-  { label: "X / Twitter", href: "https://x.com" },
 ];
 
 export function SignalSection() {
   return (
-    <section id="signal" className="mx-auto max-w-5xl px-6 py-32 md:px-10">
-      <h2 className="mb-4 font-mono text-xs tracking-[0.3em] text-gray-500 uppercase">
-        Signal
-      </h2>
+    <section id="signal">
+      <div className="relative flex h-[60vh] items-center justify-center overflow-hidden md:h-[80vh]">
+        {/* Top gradient fade */}
+        <div
+          className="pointer-events-none absolute top-0 right-0 left-0 z-[2] h-40"
+          style={{
+            background:
+              "linear-gradient(to bottom, var(--gray-1), transparent)",
+          }}
+        />
 
-      <p className="mt-16 max-w-lg text-2xl leading-snug font-semibold text-white">
-        If you&apos;re building something that matters, let&apos;s talk.
-      </p>
+        {/* Bottom gradient fade */}
+        <div
+          className="pointer-events-none absolute right-0 bottom-0 left-0 z-[2] h-40"
+          style={{
+            background:
+              "linear-gradient(to top, var(--gray-1), transparent)",
+          }}
+        />
 
-      <a
-        href="mailto:hello@daviddominguez.dev"
-        className="mt-8 inline-block font-mono text-sm text-gray-400 transition-colors hover:text-white"
-      >
-        hello@daviddominguez.dev
-      </a>
+        {/* Circular photo */}
+        <div className="relative z-10 -mt-16 md:-mt-32">
+          <div className="h-56 w-56 overflow-hidden rounded-full md:h-80 md:w-80 lg:h-[420px] lg:w-[420px]">
+            <Image
+              src="/david.png"
+              alt="David Dominguez"
+              width={840}
+              height={840}
+              className="h-full w-full object-cover"
+              priority
+            />
+          </div>
+        </div>
+      </div>
 
-      <div className="mt-10 flex gap-6">
-        {SOCIALS.map((link) => (
-          <a
-            key={link.label}
-            href={link.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-mono text-[12px] text-gray-500 transition-colors hover:text-white"
-          >
-            {link.label}
-          </a>
-        ))}
+      <div className="relative z-20 mx-auto flex max-w-xl flex-col items-center px-6 -mt-16 pb-32 text-center">
+        <h2 className="text-[17px] font-medium tracking-tight text-[var(--gray-12)]">
+          David Dominguez
+        </h2>
+
+        <p className="mt-10 max-w-[400px] text-[14px] leading-[1.6] text-[var(--gray-8)]">
+          If you&apos;re building something that matters, let&apos;s talk.
+        </p>
+
+        <a
+          href="mailto:hello@daviddominguez.dev"
+          className="mt-6 block font-mono text-[clamp(18px,2.5vw,26px)] font-medium tracking-[-0.01em] text-[var(--gray-12)] transition-colors duration-200 hover:text-[var(--gray-10)]"
+        >
+          hello@daviddominguez.dev
+        </a>
+
+        <div className="mt-6 flex items-center justify-center gap-6">
+          {SOCIALS.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative inline-block overflow-hidden"
+            >
+              <span className="block text-[13px] text-[var(--gray-6)] transition-transform duration-300 ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:-translate-y-full">
+                {link.label}
+              </span>
+              <span className="absolute top-full left-0 block text-[13px] text-[var(--gray-9)] transition-transform duration-300 ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:-translate-y-full">
+                {link.label}
+              </span>
+            </a>
+          ))}
+        </div>
       </div>
     </section>
   );

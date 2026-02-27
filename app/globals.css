@@ -3,6 +3,19 @@
 :root {
   --background: #0a0a0a;
   --foreground: #ededed;
+
+  --gray-1: #040404;
+  --gray-2: #090909;
+  --gray-3: #101010;
+  --gray-4: #191919;
+  --gray-5: #262626;
+  --gray-6: #4d4d4d;
+  --gray-7: #666;
+  --gray-8: gray;
+  --gray-9: #989898;
+  --gray-10: #ababab;
+  --gray-11: #b7b7b7;
+  --gray-12: #ebebeb;
 }
 
 @theme inline {
@@ -29,8 +42,24 @@
   100% { transform: translateX(-50%); }
 }
 
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--gray-4) transparent;
+}
+
+::selection {
+  background: var(--gray-5);
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  background: var(--gray-1);
+  color: var(--gray-12);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
 }

@@ -17,15 +17,21 @@ const COMPANIES: Company[] = [
     roles: [
       {
         title: "AI & Machine Learning Engineer",
-        period: "2024 \u2014 Present",
+        period: "Jul 2025 \u2014 Present",
         description:
           "ML models that turn raw data into decisions. Automated the full lifecycle: training, validation, deployment. So models ship faster than the market moves.",
       },
       {
         title: "Software Engineer",
-        period: "2022 \u2014 2024",
+        period: "May 2024 \u2014 Jul 2025",
         description:
-          "Data processing, AI-powered analytics, and tools built on modern infrastructure. Automated workflows and delivered reporting that supported key decisions.",
+          "Data processing, AI-powered analytics, and tools built on modern infrastructure. Automated data governance workflows and delivered reporting that supported key decisions.",
+      },
+      {
+        title: "Junior Developer",
+        period: "Mar 2022 \u2014 May 2024",
+        description:
+          "Where it started. Incident resolution, security policies, process improvements. The foundation for understanding how systems actually break.",
       },
     ],
   },
@@ -35,21 +41,9 @@ const COMPANIES: Company[] = [
     roles: [
       {
         title: "Founder",
-        period: "2023 \u2014 Present",
+        period: "Apr 2025 \u2014 Present",
         description:
           "Helping businesses replace manual workflows with AI that runs on their terms. Strategy to implementation, finding the automations that actually move the needle.",
-      },
-    ],
-  },
-  {
-    name: "Previous Company",
-    location: "City",
-    roles: [
-      {
-        title: "Junior Developer",
-        period: "2020 \u2014 2022",
-        description:
-          "Where it started. Building features, fixing bugs, learning how production systems actually break. The foundation for understanding real-world engineering.",
       },
     ],
   },
@@ -57,53 +51,52 @@ const COMPANIES: Company[] = [
 
 function RoleItem({ role }: { role: Role }) {
   return (
-    <div className="border-l border-gray-800 py-6 pl-6">
-      <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
-        <h4 className="text-sm font-medium text-white">{role.title}</h4>
-        <span className="font-mono text-[11px] text-gray-500">
+    <li className="my-4 flex items-start gap-4">
+      <span className="mt-1 h-5 w-5 shrink-0 rounded-full bg-[var(--gray-3)]" />
+      <div>
+        <div className="font-medium text-[var(--gray-12)]">
+          {role.title}
+        </div>
+        <div className="mt-0.5 font-mono text-sm text-[var(--gray-6)]">
           {role.period}
-        </span>
+        </div>
+        <p className="mt-1.5 text-[15px] leading-relaxed text-[var(--gray-7)]">
+          {role.description}
+        </p>
       </div>
-      <p className="mt-3 text-sm leading-relaxed text-gray-400">
-        {role.description}
-      </p>
-    </div>
+    </li>
   );
 }
 
 function CompanyBlock({ company }: { company: Company }) {
   return (
-    <div>
-      <div className="flex items-baseline gap-3">
-        <h3 className="text-base font-semibold text-white">{company.name}</h3>
-        <span className="font-mono text-[11px] text-gray-500">
-          {company.location}
+    <div className="my-22">
+      <header className="mb-4 border-b border-[var(--gray-3)] py-2 text-xl font-medium tracking-tight text-[var(--gray-7)]">
+        <span className="mr-1 text-[var(--gray-12)]">
+          {company.name}
         </span>
-      </div>
-      <div className="mt-2">
+        /&nbsp;{company.location}
+      </header>
+      <ul>
         {company.roles.map((role) => (
           <RoleItem key={role.title} role={role} />
         ))}
-      </div>
+      </ul>
     </div>
   );
 }
 
 export function ExperienceSection() {
   return (
-    <section
+    <div
       id="experience"
-      className="mx-auto max-w-5xl px-6 py-32 md:px-10"
+      className="flex w-full flex-col items-center"
     >
-      <h2 className="mb-4 font-mono text-xs tracking-[0.3em] text-gray-500 uppercase">
-        Experience
-      </h2>
-
-      <div className="mt-16 space-y-16">
+      <div className="mb-[25vh] w-full max-w-4xl px-10">
         {COMPANIES.map((company) => (
           <CompanyBlock key={company.name} company={company} />
         ))}
       </div>
-    </section>
+    </div>
   );
 }

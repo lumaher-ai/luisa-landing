@@ -1,60 +1,54 @@
-interface StackCategory {
-  label: string;
-  items: string[];
+interface StackItem {
+  name: string;
+  level: "primary" | "secondary" | "tertiary";
 }
 
-const STACK: StackCategory[] = [
-  {
-    label: "Languages",
-    items: ["Python", "TypeScript", "Go", "Swift"],
-  },
-  {
-    label: "Frontend",
-    items: ["React 19", "Next.js", "Three.js", "Tailwind CSS"],
-  },
-  {
-    label: "Backend / ML",
-    items: ["PyTorch", "FastAPI", "LangChain", "Ollama"],
-  },
-  {
-    label: "Data",
-    items: ["PostgreSQL", "ChromaDB", "Vector DB", "SQL"],
-  },
-  {
-    label: "Infrastructure",
-    items: ["AWS", "Docker", "Vercel", "GitHub Actions"],
-  },
-  {
-    label: "Specialized",
-    items: ["RAG", "Local LLMs", "Embeddings", "NLP"],
-  },
+const STACK_ITEMS: StackItem[] = [
+  { name: "Go", level: "primary" },
+  { name: "Python", level: "primary" },
+  { name: "TypeScript", level: "primary" },
+  { name: "Swift", level: "secondary" },
+  { name: "PyTorch", level: "secondary" },
+  { name: "React", level: "primary" },
+  { name: "Next.js", level: "primary" },
+  { name: "Three.js", level: "secondary" },
+  { name: "Ollama", level: "primary" },
+  { name: "RAG", level: "primary" },
+  { name: "Snowflake", level: "secondary" },
+  { name: "AWS", level: "tertiary" },
+  { name: "Docker", level: "secondary" },
+  { name: "SQL", level: "primary" },
+  { name: "LangChain", level: "secondary" },
+  { name: "Electron", level: "secondary" },
 ];
+
+const LEVEL_STYLES: Record<string, string> = {
+  primary:
+    "text-[clamp(24px,4vw,36px)] text-[var(--gray-12)]",
+  secondary:
+    "text-[clamp(18px,3vw,26px)] text-[var(--gray-9)]",
+  tertiary:
+    "text-[clamp(15px,2vw,20px)] text-[var(--gray-7)]",
+};
 
 export function StackSection() {
   return (
-    <section id="stack" className="mx-auto max-w-5xl px-6 py-32 md:px-10">
-      <h2 className="mb-4 font-mono text-xs tracking-[0.3em] text-gray-500 uppercase">
-        Stack
-      </h2>
-
-      <div className="mt-16 grid gap-10 sm:grid-cols-2 md:grid-cols-3">
-        {STACK.map((category) => (
-          <div key={category.label}>
-            <h3 className="mb-4 text-sm font-medium text-white">
-              {category.label}
-            </h3>
-            <ul className="space-y-2">
-              {category.items.map((item) => (
-                <li
-                  key={item}
-                  className="font-mono text-[13px] text-gray-500"
-                >
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+    <section id="stack" className="relative px-6 py-32 md:px-8">
+      <div className="mx-auto max-w-[960px]">
+        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-4 md:gap-x-8 md:gap-y-5">
+          {STACK_ITEMS.map((item) => (
+            <div
+              key={item.name}
+              className="relative cursor-default select-none"
+            >
+              <span
+                className={`font-medium tracking-[-0.02em] transition-colors duration-200 ${LEVEL_STYLES[item.level]}`}
+              >
+                {item.name}
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

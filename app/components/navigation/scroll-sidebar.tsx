@@ -8,8 +8,8 @@ interface SectionDef {
 }
 
 const SECTIONS: SectionDef[] = [
-  { id: "philosophy", label: "Philosophy" },
   { id: "experience", label: "Experience" },
+  { id: "philosophy", label: "Philosophy" },
   { id: "work", label: "Work" },
   { id: "stack", label: "Stack" },
   { id: "signal", label: "Signal" },
@@ -165,7 +165,7 @@ export function ScrollSidebar() {
       <div className="relative" style={{ height: TOTAL_HEIGHT, width: 70 }}>
         {/* Vertical line */}
         <div
-          className="absolute left-0 top-0 w-px bg-gray-800"
+          className="absolute left-0 top-0 w-px bg-[var(--gray-3)]"
           style={{ height: TOTAL_HEIGHT }}
         />
 
@@ -181,15 +181,16 @@ export function ScrollSidebar() {
                 tickWidths[i] > tick.w + 3
                   ? "#FF4D00"
                   : tick.section !== undefined
-                    ? "var(--color-foreground, #666)"
-                    : "var(--color-foreground, #444)",
+                    ? "var(--gray-4)"
+                    : "var(--gray-4)",
               opacity:
                 tickWidths[i] > tick.w + 3
                   ? 1
                   : tick.section !== undefined
                     ? 0.4
                     : 0.2,
-              transition: "background-color 150ms ease",
+              transition:
+                "background-color 150ms cubic-bezier(0.2, 0.8, 0.2, 1)",
             }}
           />
         ))}
@@ -269,7 +270,7 @@ export function ScrollSidebar() {
               <span
                 className="text-[13px] font-medium tracking-[0.08em] uppercase whitespace-nowrap"
                 style={{
-                  color: isActive ? "#FF4D00" : "var(--color-foreground, #666)",
+                  color: isActive ? "#FF4D00" : "var(--gray-7)",
                   opacity: isActive ? 1 : 0,
                   transform: isActive ? "translateX(0)" : "translateX(-8px)",
                   filter: isActive ? "blur(0px)" : "blur(4px)",

@@ -31,8 +31,11 @@ export function LiveCounter() {
   }, []);
 
   return (
-    <span className="hidden font-mono text-[10px] tracking-wider text-gray-500 md:inline">
-      ${display} trillion computed while you&apos;ve been here
+    <span className="hidden font-mono text-[11px] tracking-[0.02em] lg:inline">
+      <span className="text-[var(--gray-11)]">{display} trillion</span>
+      <span className="ml-1 text-[var(--gray-7)]">
+        synapses fired while you&apos;re here
+      </span>
     </span>
   );
 }
