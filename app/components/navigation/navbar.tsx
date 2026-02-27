@@ -1,3 +1,5 @@
+import { MobileNav } from "./mobile-nav";
+
 export function Navbar() {
   return (
     <nav
@@ -9,12 +11,15 @@ export function Navbar() {
         transition: "all 200ms cubic-bezier(0.2, 0.8, 0.2, 1)",
       }}
     >
-      <a
-        href="#"
-        className="font-mono text-[13px] font-medium tracking-[0.08em] text-[var(--gray-9)]"
-      >
-        DAVID DOMINGUEZ
-      </a>
+      <div className="flex items-center gap-3">
+        <MobileNav />
+        <a
+          href="#"
+          className="font-mono text-[13px] font-medium tracking-[0.08em] text-[var(--gray-9)]"
+        >
+          DAVID DOMINGUEZ
+        </a>
+      </div>
 
       <a
         href="/cv_david.pdf"

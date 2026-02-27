@@ -40,7 +40,7 @@ const COMPANIES: Company[] = [
     location: "Bogotá",
     roles: [
       {
-        title: "CTO & Founder",
+        title: "CTO",
         period: "Aug 2022 \u2014 May 2024",
         description:
           "Created a client-side IDE for a low-code platform. Built the FE and BE, including a graphics engine and compiler for transforming user interactions into code. This design allowed the product to scale to 1M+ users with virtually zero cost.",
@@ -74,6 +74,18 @@ const COMPANIES: Company[] = [
         period: "Dec 2020 \u2014 Aug 2021",
         description:
           "Presented and developed a Python interpreter for C, allowing hundreds of collaborators to develop the company\u2019s POS devices \u2014 previously only 10 developers could work on them. Led implementation and deployment of thousands of terminals.",
+      },
+    ],
+  },
+  {
+    name: "Other dev jobs",
+    location: "Bogotá",
+    roles: [
+      {
+        title: "Developer",
+        period: "Oct 2018 \u2014 Dec 2020",
+        description:
+          "Various development roles building web applications and growing fundamentals in TypeScript, React, Node.js, and backend systems.",
       },
     ],
   },
@@ -123,6 +135,9 @@ export function ExperienceSection() {
       className="flex w-full flex-col items-center"
     >
       <div className="mb-[25vh] w-full max-w-4xl px-10">
+        <h2 className="mb-4 text-center text-[clamp(28px,4vw,42px)] font-medium leading-[1.1] tracking-[-0.03em] text-[var(--gray-12)]">
+          Experience
+        </h2>
         {COMPANIES.map((company) => (
           <CompanyBlock key={company.name} company={company} />
         ))}

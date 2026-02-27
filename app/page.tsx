@@ -5,6 +5,7 @@ import { ExperienceSection } from "@/app/components/sections/experience-section"
 import { PhilosophySection } from "@/app/components/sections/philosophy-section";
 import { WorkSection } from "@/app/components/sections/work-section";
 import { StackSection } from "@/app/components/sections/stack-section";
+import { EducationSection } from "@/app/components/sections/education-section";
 import { SignalSection } from "@/app/components/sections/signal-section";
 import { Footer } from "@/app/components/sections/footer";
 
@@ -18,6 +19,7 @@ export default function Home() {
       <PhilosophySection />
       <WorkSection />
       <StackSection />
+      <EducationSection />
       <SignalSection />
       <Footer />
     </main>

@@ -65,9 +65,9 @@ export default function BrainScene() {
     const t = state.clock.elapsedTime;
     const cam = state.camera as THREE.PerspectiveCamera;
     const isMobile = window.innerWidth < 768;
-    const targetY = isMobile ? 16 : 12;
-    const targetZ = isMobile ? 14 : 10;
-    const targetFov = isMobile ? 50 : 45;
+    const targetY = isMobile ? 34 : 12;
+    const targetZ = isMobile ? 30 : 10;
+    const targetFov = isMobile ? 38 : 45;
 
     if (cameraReady.current) {
       cam.position.set(0, targetY, targetZ);
@@ -87,7 +87,7 @@ export default function BrainScene() {
     }
 
     cam.updateProjectionMatrix();
-    cam.lookAt(0, 0, 0);
+    cam.lookAt(0, isMobile ? -8 : 0, 0);
 
     const cx = state.pointer.x;
     const cy = state.pointer.y;

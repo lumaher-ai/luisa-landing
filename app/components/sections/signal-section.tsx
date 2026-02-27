@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { SignalSphereCanvas } from "../brain/signal-sphere-canvas";
 
 interface SocialLink {
   label: string;
@@ -32,9 +33,17 @@ export function SignalSection() {
           }}
         />
 
-        {/* Circular photo */}
-        <div className="relative z-10 -mt-16 md:-mt-32">
-          <div className="h-56 w-56 overflow-hidden rounded-full md:h-80 md:w-80 lg:h-[420px] lg:w-[420px]">
+        {/* Three.js sphere mesh */}
+        <div className="absolute inset-0 z-[1]">
+          <SignalSphereCanvas />
+        </div>
+
+        {/* Circular photo — translucent, centered inside the sphere */}
+        <div className="relative z-[3]">
+          <div
+            className="h-56 w-56 overflow-hidden rounded-full md:h-80 md:w-80 lg:h-[420px] lg:w-[420px]"
+            style={{ opacity: 0.65 }}
+          >
             <Image
               src="/david.png"
               alt="David Dominguez"
@@ -48,9 +57,12 @@ export function SignalSection() {
       </div>
 
       <div className="relative z-20 mx-auto flex max-w-xl flex-col items-center px-6 -mt-16 pb-32 text-center">
-        <h2 className="text-[17px] font-medium tracking-tight text-[var(--gray-12)]">
-          David Dominguez
+        <h2 className="mb-4 text-[clamp(28px,4vw,42px)] font-medium leading-[1.1] tracking-[-0.03em] text-[var(--gray-12)]">
+          Contact
         </h2>
+        <p className="text-[17px] font-medium tracking-tight text-[var(--gray-9)]">
+          David Dominguez
+        </p>
 
         <p className="mt-10 max-w-[400px] text-[14px] leading-[1.6] text-[var(--gray-8)]">
           If you&apos;re building something that matters, let&apos;s talk.
