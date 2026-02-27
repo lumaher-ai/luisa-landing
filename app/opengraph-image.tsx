@@ -1,11 +1,11 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "David Dominguez — CTO / AI Engineer / Builder";
-export const size = { width: 1200, height: 630 };
-export const contentType = "image/png";
+export const alt: string = "David Dominguez — CTO / AI Engineer / Builder";
+export const size: { width: number; height: number } = { width: 1200, height: 630 };
+export const contentType: string = "image/png";
 
-export default function Image() {
+export default function Image(): ImageResponse {
   return new ImageResponse(
     (
       <div
