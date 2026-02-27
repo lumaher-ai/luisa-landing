@@ -12,6 +12,12 @@ import { Footer } from "@/app/components/sections/footer";
 export default function Home() {
   return (
     <main className="min-h-screen bg-[var(--gray-1)] text-[var(--gray-12)]">
+      <a
+        href="#experience"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:text-black"
+      >
+        Skip to main content
+      </a>
       <Navbar />
       <ScrollSidebar />
       <HeroSection />
