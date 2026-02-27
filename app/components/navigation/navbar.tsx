@@ -3,6 +3,7 @@ import { MobileNav } from "./mobile-nav";
 export function Navbar() {
   return (
     <nav
+      aria-label="Main navigation"
       className="fixed top-0 right-0 left-0 z-40 flex h-14 items-center justify-between px-6 md:px-8"
       style={{
         backdropFilter: "blur(12px)",
