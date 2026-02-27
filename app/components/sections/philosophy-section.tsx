@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
+import { PhilosophyCanvas } from "./philosophy-canvas";
 
 interface PhilosophyItem {
   title: string;
@@ -25,70 +26,12 @@ const PRINCIPLES: PhilosophyItem[] = [
   },
 ];
 
-function PhilosophyNav({
-  active,
-  onSelect,
-}: {
-  active: number;
-  onSelect: (i: number) => void;
-}) {
-  return (
-    <div className="relative flex items-center justify-between px-4">
-      {/* Connecting line */}
-      <div className="absolute top-1/2 right-4 left-4 h-px -translate-y-1/2 bg-[var(--gray-3)]" />
-
-      {PRINCIPLES.map((_, i) => {
-        const isActive = i === active;
-        return (
-          <button
-            key={i}
-            type="button"
-            onClick={() => onSelect(i)}
-            className="relative z-10 flex cursor-pointer flex-col items-center gap-2"
-          >
-            {/* Dot */}
-            <div
-              className="flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-300"
-              style={{
-                borderColor: isActive
-                  ? "rgba(100, 140, 255, 0.5)"
-                  : "var(--gray-4)",
-                background: isActive
-                  ? "rgba(100, 140, 255, 0.08)"
-                  : "var(--gray-1)",
-              }}
-            >
-              <div
-                className="rounded-full transition-all duration-300"
-                style={{
-                  width: isActive ? 12 : 6,
-                  height: isActive ? 12 : 6,
-                  background: isActive
-                    ? "rgb(100, 140, 255)"
-                    : "var(--gray-6)",
-                }}
-              />
-            </div>
-            {/* Number */}
-            <span
-              className="font-mono text-[12px] tracking-[0.06em] transition-colors duration-300"
-              style={{
-                color: isActive
-                  ? "var(--gray-12)"
-                  : "var(--gray-6)",
-              }}
-            >
-              {String(i + 1).padStart(2, "0")}
-            </span>
-          </button>
-        );
-      })}
-    </div>
-  );
-}
-
 export function PhilosophySection() {
   const [active, setActive] = useState(0);
+
+  const handleSelect = useCallback((i: number) => {
+    setActive(i);
+  }, []);
 
   return (
     <section
@@ -96,9 +39,9 @@ export function PhilosophySection() {
       className="relative px-6 pt-8 pb-32 md:px-8"
     >
       <div className="mx-auto max-w-[960px]">
-        {/* Desktop: nav + centered statement */}
+        {/* Desktop: canvas + centered statement */}
         <div className="hidden md:block">
-          <PhilosophyNav active={active} onSelect={setActive} />
+          <PhilosophyCanvas active={active} onSelect={handleSelect} />
 
           <div className="mt-14 flex min-h-[180px] items-start justify-center text-center">
             <div className="max-w-[540px]">
