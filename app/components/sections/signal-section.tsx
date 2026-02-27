@@ -6,9 +6,8 @@ interface SocialLink {
 }
 
 const SOCIALS: SocialLink[] = [
-  { label: "GitHub", href: "https://github.com" },
-  { label: "X", href: "https://x.com" },
-  { label: "LinkedIn", href: "https://linkedin.com" },
+  { label: "GitHub", href: "https://github.com/daviddominguezh/" },
+  { label: "LinkedIn", href: "https://linkedin.com/in/daviddominguez" },
 ];
 
 export function SignalSection() {
@@ -58,10 +57,10 @@ export function SignalSection() {
         </p>
 
         <a
-          href="mailto:hello@daviddominguez.dev"
-          className="mt-6 block font-mono text-[clamp(18px,2.5vw,26px)] font-medium tracking-[-0.01em] text-[var(--gray-12)] transition-colors duration-200 hover:text-[var(--gray-10)]"
+          href="mailto:l.david.dominguez.12@gmail.com"
+          className="mt-6 block font-mono text-[clamp(14px,2vw,20px)] font-medium tracking-[-0.01em] text-[var(--gray-12)] transition-colors duration-200 hover:text-[var(--gray-10)]"
         >
-          hello@daviddominguez.dev
+          l.david.dominguez.12@gmail.com
         </a>
 
         <div className="mt-6 flex items-center justify-center gap-6">

@@ -12,7 +12,7 @@ export function HeroHeadline() {
       </p>
 
       <p className="mt-2 font-mono text-[11px] tracking-[0.04em] text-[var(--gray-6)]">
-        AI Engineer / Open-source builder
+        CTO / AI Engineer / Builder
       </p>
 
       <a

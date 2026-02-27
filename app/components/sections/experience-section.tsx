@@ -12,38 +12,68 @@ interface Company {
 
 const COMPANIES: Company[] = [
   {
-    name: "Your Company",
-    location: "City",
+    name: "Closer AI",
+    location: "Bogotá",
     roles: [
       {
-        title: "AI & Machine Learning Engineer",
-        period: "Jul 2025 \u2014 Present",
+        title: "CTO",
+        period: "Sept 2025 \u2014 Present",
         description:
-          "ML models that turn raw data into decisions. Automated the full lifecycle: training, validation, deployment. So models ship faster than the market moves.",
-      },
-      {
-        title: "Software Engineer",
-        period: "May 2024 \u2014 Jul 2025",
-        description:
-          "Data processing, AI-powered analytics, and tools built on modern infrastructure. Automated data governance workflows and delivered reporting that supported key decisions.",
-      },
-      {
-        title: "Junior Developer",
-        period: "Mar 2022 \u2014 May 2024",
-        description:
-          "Where it started. Incident resolution, security policies, process improvements. The foundation for understanding how systems actually break.",
+          "Built an AI sales agent with a multi-step agentic system using dynamic tool orchestration, long-term conversation memory, and reasoning loops. Designed a routing layer across 20+ LLM providers with intent classification, fallbacks, and adaptive model selection to balance costs, latency, and complexity. Reduced inference costs 12x.",
       },
     ],
   },
   {
-    name: "Side Project / Startup",
-    location: "Remote",
+    name: "MercadoLibre",
+    location: "Bogotá",
     roles: [
       {
-        title: "Founder",
-        period: "Apr 2025 \u2014 Present",
+        title: "Technical Lead",
+        period: "May 2024 \u2014 Sept 2025",
         description:
-          "Helping businesses replace manual workflows with AI that runs on their terms. Strategy to implementation, finding the automations that actually move the needle.",
+          "Led a team of 10 engineers using Docker, Java, React, and TypeScript. Configured monitoring for system availability and performance. Helped the team navigate scaling from the first user to more than 800,000.",
+      },
+    ],
+  },
+  {
+    name: "Agua",
+    location: "Bogotá",
+    roles: [
+      {
+        title: "CTO & Founder",
+        period: "Aug 2022 \u2014 May 2024",
+        description:
+          "Created a client-side IDE for a low-code platform. Built the FE and BE, including a graphics engine and compiler for transforming user interactions into code. This design allowed the product to scale to 1M+ users with virtually zero cost.",
+      },
+    ],
+  },
+  {
+    name: "Mr. Pink",
+    location: "Bogotá",
+    roles: [
+      {
+        title: "Lead Developer",
+        period: "Dec 2021 \u2014 Aug 2022",
+        description:
+          "Convinced the CTO of the agency\u2019s biggest client to hire us for their marketing department\u2019s digital transformation. Led a team of 6 engineers through the milestones while managing the execution of the backlog.",
+      },
+      {
+        title: "Senior Developer",
+        period: "Aug 2021 \u2014 Dec 2021",
+        description:
+          "Built web apps for clients. After identifying repetitive scaffolding tasks, built a platform for automated project scaffolding using Kubernetes \u2014 doubling the team\u2019s development speed.",
+      },
+    ],
+  },
+  {
+    name: "Credibanco",
+    location: "Bogotá",
+    roles: [
+      {
+        title: "Senior Web Developer",
+        period: "Dec 2020 \u2014 Aug 2021",
+        description:
+          "Presented and developed a Python interpreter for C, allowing hundreds of collaborators to develop the company\u2019s POS devices \u2014 previously only 10 developers could work on them. Led implementation and deployment of thousands of terminals.",
       },
     ],
   },
@@ -70,7 +100,7 @@ function RoleItem({ role }: { role: Role }) {
 
 function CompanyBlock({ company }: { company: Company }) {
   return (
-    <div className="my-22">
+    <div className="my-16">
       <header className="mb-4 border-b border-[var(--gray-3)] py-2 text-xl font-medium tracking-tight text-[var(--gray-7)]">
         <span className="mr-1 text-[var(--gray-12)]">
           {company.name}

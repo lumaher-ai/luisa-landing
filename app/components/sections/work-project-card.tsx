@@ -94,21 +94,38 @@ export function ProjectCard({
       />
 
       {/* Link — collapses on desktop, expands on hover */}
-      <div
-        className="mt-4 max-h-[40px] overflow-hidden opacity-100 transition-all duration-200 md:max-h-0 md:opacity-0 md:group-hover:max-h-[40px] md:group-hover:opacity-100"
-        style={{
-          transitionTimingFunction: "cubic-bezier(0.2, 0.8, 0.2, 1)",
-        }}
-      >
-        <a
-          href={project.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-[13px] text-[var(--gray-7)] transition-colors duration-200 hover:text-[var(--gray-11)]"
+      {project.link && project.linkLabel && (
+        <div
+          className="mt-4 max-h-[40px] overflow-hidden opacity-100 transition-all duration-200 md:max-h-0 md:opacity-0 md:group-hover:max-h-[40px] md:group-hover:opacity-100"
+          style={{
+            transitionTimingFunction: "cubic-bezier(0.2, 0.8, 0.2, 1)",
+          }}
         >
-          {project.linkLabel}
-        </a>
-      </div>
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-[13px] text-blue-400 transition-colors duration-200 hover:text-blue-300"
+          >
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M5 2H2a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V7M7.5 1H11m0 0v3.5M11 1 5.5 6.5"
+                stroke="currentColor"
+                strokeWidth="1.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            {project.linkLabel}
+          </a>
+        </div>
+      )}
     </div>
   );
 }

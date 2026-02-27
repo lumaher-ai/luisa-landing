@@ -4,22 +4,22 @@ interface StackItem {
 }
 
 const STACK_ITEMS: StackItem[] = [
-  { name: "Go", level: "primary" },
-  { name: "Python", level: "primary" },
   { name: "TypeScript", level: "primary" },
-  { name: "Swift", level: "secondary" },
-  { name: "PyTorch", level: "secondary" },
   { name: "React", level: "primary" },
-  { name: "Next.js", level: "primary" },
-  { name: "Three.js", level: "secondary" },
-  { name: "Ollama", level: "primary" },
-  { name: "RAG", level: "primary" },
-  { name: "Snowflake", level: "secondary" },
-  { name: "AWS", level: "tertiary" },
-  { name: "Docker", level: "secondary" },
-  { name: "SQL", level: "primary" },
-  { name: "LangChain", level: "secondary" },
-  { name: "Electron", level: "secondary" },
+  { name: "Node.js", level: "primary" },
+  { name: "Python", level: "primary" },
+  { name: "AI Agents", level: "primary" },
+  { name: "Java", level: "secondary" },
+  { name: "Docker", level: "primary" },
+  { name: "Kubernetes", level: "secondary" },
+  { name: "AWS", level: "secondary" },
+  { name: "GCP", level: "secondary" },
+  { name: "React Native", level: "secondary" },
+  { name: "LLM Routing", level: "primary" },
+  { name: "MongoDB", level: "secondary" },
+  { name: "MySQL", level: "secondary" },
+  { name: "Jest", level: "tertiary" },
+  { name: "CI/CD", level: "tertiary" },
 ];
 
 const LEVEL_STYLES: Record<string, string> = {
