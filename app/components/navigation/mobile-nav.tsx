@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useLayoutEffect } from "react";
 import { createPortal } from "react-dom";
 
 const SECTIONS = [
@@ -16,7 +16,7 @@ export function MobileNav() {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setMounted(true);
   }, []);
 
@@ -45,6 +45,9 @@ export function MobileNav() {
           {/* Drawer */}
           <div
             className="fixed top-0 left-0 h-full w-64 bg-black px-6 py-8 md:hidden"
+            aria-hidden={!open}
+            aria-modal={open}
+            role="dialog"
             style={{
               zIndex: 9999,
               transform: open ? "translateX(0)" : "translateX(-100%)",
@@ -54,8 +57,9 @@ export function MobileNav() {
             <button
               type="button"
               aria-label="Close navigation"
-              className="mb-10 self-end flex text-[var(--gray-6)] hover:text-[var(--gray-12)]"
+              className="mb-10 flex self-end text-[var(--gray-6)] hover:text-[var(--gray-12)]"
               onClick={() => setOpen(false)}
+              tabIndex={open ? 0 : -1}
             >
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M2 2L14 14M14 2L2 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
@@ -68,6 +72,7 @@ export function MobileNav() {
                   key={s.id}
                   type="button"
                   onClick={() => navigate(s.id)}
+                  tabIndex={open ? 0 : -1}
                   className="flex items-center gap-4 py-3 text-left"
                 >
                   <span className="font-mono text-[11px] tracking-[0.06em] text-[var(--gray-5)]">
@@ -91,7 +96,8 @@ export function MobileNav() {
       <button
         type="button"
         aria-label="Open navigation"
-        className="md:hidden flex h-8 w-8 flex-col items-center justify-center gap-1.5"
+        aria-expanded={open}
+        className="flex h-8 w-8 flex-col items-center justify-center gap-1.5 md:hidden"
         onClick={() => setOpen(true)}
       >
         <span className="block h-px w-5 bg-[var(--gray-9)]" />

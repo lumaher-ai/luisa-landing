@@ -130,7 +130,7 @@ function CompanyBlock({ company }: { company: Company }) {
 
 export function ExperienceSection() {
   return (
-    <div
+    <section
       id="experience"
       className="flex w-full flex-col items-center"
     >
@@ -142,6 +142,6 @@ export function ExperienceSection() {
           <CompanyBlock key={company.name} company={company} />
         ))}
       </div>
-    </div>
+    </section>
   );
 }

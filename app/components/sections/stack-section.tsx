@@ -28,6 +28,8 @@ const STACK_ITEMS: StackItem[] = [
   { name: "LLM Routing", level: "primary", subtitle: "multi-provider, fallbacks", years: 2 },
 ];
 
+const SORTED_ITEMS = [...STACK_ITEMS].sort((a, b) => b.years - a.years);
+
 const LEVEL_STYLES: Record<string, string> = {
   primary: "text-[clamp(24px,4vw,36px)] text-[var(--gray-12)]",
   secondary: "text-[clamp(18px,3vw,26px)] text-[var(--gray-9)]",
@@ -36,11 +38,13 @@ const LEVEL_STYLES: Record<string, string> = {
 
 export function StackSection() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return window.matchMedia("(pointer: coarse)").matches;
+  });
 
   useEffect(() => {
     const mq = window.matchMedia("(pointer: coarse)");
-    setIsMobile(mq.matches);
     const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
     mq.addEventListener("change", handler);
     return () => mq.removeEventListener("change", handler);
@@ -54,7 +58,7 @@ export function StackSection() {
         </h2>
 
         <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-4 md:gap-x-8 md:gap-y-5">
-          {STACK_ITEMS.map((item, i) => {
+          {SORTED_ITEMS.map((item, i) => {
             const isHovered = hoveredIndex === i;
             const isDimmed = hoveredIndex !== null && !isHovered;
 
@@ -70,14 +74,12 @@ export function StackSection() {
                 onMouseEnter={isMobile ? undefined : () => setHoveredIndex(i)}
                 onMouseLeave={isMobile ? undefined : () => setHoveredIndex(null)}
               >
-                <span
-                  className={`font-medium tracking-[-0.02em] ${LEVEL_STYLES[item.level]}`}
-                >
+                <span className={`font-medium tracking-[-0.02em] ${LEVEL_STYLES[item.level]}`}>
                   {item.name}
                 </span>
 
                 {isHovered && !isMobile && (
-                  <span className="pointer-events-none absolute top-full left-1/2 mt-2 -translate-x-1/2 whitespace-nowrap font-mono text-[11px] text-[var(--gray-6)]">
+                  <span className="pointer-events-none absolute top-full left-1/2 mt-2 -translate-x-1/2 font-mono text-[11px] text-[var(--gray-6)]" style={{ whiteSpace: "nowrap", maxWidth: "min(200px, 40vw)" }}>
                     {item.subtitle}
                     <span className="ml-2 text-[var(--gray-5)]">·</span>
                     <span className="ml-2 text-[var(--gray-7)]">{item.years}y</span>

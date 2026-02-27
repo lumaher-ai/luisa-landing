@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useMemo } from "react";
+import { useRef, useMemo, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import {
@@ -43,6 +43,17 @@ function updateUniforms(
 
 export default function BrainScene() {
   const cameraReady = useRef(false);
+  const isMobileRef = useRef(
+    typeof window !== "undefined" && window.innerWidth < 768
+  );
+
+  useEffect(() => {
+    const update = () => {
+      isMobileRef.current = window.innerWidth < 768;
+    };
+    window.addEventListener("resize", update, { passive: true });
+    return () => window.removeEventListener("resize", update);
+  }, []);
   const brainMatRef = useRef<THREE.ShaderMaterial>(null);
   const signalMatRef = useRef<THREE.ShaderMaterial>(null);
   const fiberMatRef = useRef<THREE.ShaderMaterial>(null);
@@ -64,7 +75,7 @@ export default function BrainScene() {
   useFrame((state) => {
     const t = state.clock.elapsedTime;
     const cam = state.camera as THREE.PerspectiveCamera;
-    const isMobile = window.innerWidth < 768;
+    const isMobile = isMobileRef.current;
     const targetY = isMobile ? 34 : 12;
     const targetZ = isMobile ? 30 : 10;
     const targetFov = isMobile ? 38 : 45;

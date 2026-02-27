@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useMemo } from "react";
+import { useRef, useMemo, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
@@ -122,6 +122,13 @@ export default function SignalSphereScene() {
     () => ({ uTime: { value: 0 } }),
     []
   );
+
+  useEffect(() => {
+    return () => {
+      arcGeo.dispose();
+      wireGeo.dispose();
+    };
+  }, [arcGeo, wireGeo]);
 
   useFrame((state) => {
     const t = state.clock.elapsedTime;

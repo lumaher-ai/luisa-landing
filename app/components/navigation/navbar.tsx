@@ -13,12 +13,11 @@ export function Navbar() {
     >
       <div className="flex items-center gap-3">
         <MobileNav />
-        <a
-          href="#"
+        <div
           className="font-mono text-[13px] font-medium tracking-[0.08em] text-[var(--gray-9)]"
         >
           DAVID DOMINGUEZ
-        </a>
+        </div>
       </div>
 
       <a
