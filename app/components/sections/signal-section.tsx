@@ -82,6 +82,7 @@ export function SignalSection() {
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={`${link.label}, opens in new tab`}
               className="group relative inline-block overflow-hidden"
             >
               <span className="block text-[13px] text-[var(--gray-6)] transition-transform duration-300 ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:-translate-y-full">
