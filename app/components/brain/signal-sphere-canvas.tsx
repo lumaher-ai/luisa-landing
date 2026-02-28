@@ -7,5 +7,9 @@ const SignalSphereRenderer = dynamic(() => import("./signal-sphere-renderer"), {
 });
 
 export function SignalSphereCanvas() {
-  return <SignalSphereRenderer />;
+  return (
+    <div aria-hidden="true">
+      <SignalSphereRenderer />
+    </div>
+  );
 }

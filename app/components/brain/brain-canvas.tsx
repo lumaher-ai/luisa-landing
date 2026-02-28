@@ -7,5 +7,9 @@ const BrainRenderer = dynamic(() => import("./brain-renderer"), {
 });
 
 export function BrainCanvas() {
-  return <BrainRenderer />;
+  return (
+    <div aria-hidden="true">
+      <BrainRenderer />
+    </div>
+  );
 }

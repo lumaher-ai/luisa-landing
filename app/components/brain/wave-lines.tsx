@@ -39,7 +39,7 @@ export function WaveLines() {
   const centerY = 300;
 
   return (
-    <div className="absolute inset-0 z-0 overflow-hidden">
+    <div aria-hidden="true" className="absolute inset-0 z-0 overflow-hidden">
       <svg
         className="absolute top-1/2 left-0 h-[600px] w-[3000px] -translate-y-1/2"
         viewBox="0 0 3000 600"
