@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useLayoutEffect, useEffect, useRef } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 
 const SECTIONS = [
@@ -19,7 +19,7 @@ export function MobileNav() {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const drawerRef = useRef<HTMLDivElement>(null);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     setMounted(true);
   }, []);
 
