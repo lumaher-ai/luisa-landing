@@ -128,6 +128,7 @@ export function ProjectCard({
             href={project.link}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label={`View ${project.name}, opens in new tab`}
             className="inline-flex items-center gap-1.5 text-[13px] text-blue-400 transition-colors duration-200 hover:text-blue-300"
           >
             <svg
