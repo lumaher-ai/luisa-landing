@@ -152,7 +152,7 @@ export function ScrollSidebar() {
 
   return (
     <div
-      aria-hidden={!visible}
+      aria-hidden={visible ? undefined : true}
       className="fixed left-6 z-30 hidden items-center lg:flex"
       style={{
         top: 56,
@@ -259,7 +259,7 @@ export function ScrollSidebar() {
           return (
             <button
               key={sectionIdx}
-              aria-label={SECTIONS[sectionIdx].label}
+              aria-label={`Scroll to ${SECTIONS[sectionIdx].label} section`}
               onClick={() => scrollToSection(SECTIONS[sectionIdx].id)}
               className="absolute left-0 cursor-pointer"
               style={{
