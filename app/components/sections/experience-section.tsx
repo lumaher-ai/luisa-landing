@@ -132,6 +132,7 @@ export function ExperienceSection() {
   return (
     <section
       id="experience"
+      tabIndex={-1}
       className="flex w-full flex-col items-center"
     >
       <div className="mb-[25vh] w-full max-w-4xl px-10">

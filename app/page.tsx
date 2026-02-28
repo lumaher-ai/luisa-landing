@@ -16,7 +16,7 @@ export default function Home() {
         href="#experience"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:text-black"
       >
-        Skip to main content
+        Skip to content
       </a>
       <Navbar />
       <ScrollSidebar />
