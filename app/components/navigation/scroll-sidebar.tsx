@@ -152,6 +152,7 @@ export function ScrollSidebar() {
 
   return (
     <div
+      aria-hidden={!visible}
       className="fixed left-6 z-30 hidden items-center lg:flex"
       style={{
         top: 56,
@@ -231,6 +232,7 @@ export function ScrollSidebar() {
           {/* LET'S TALK button */}
           <button
             onClick={() => scrollToSection("signal")}
+            aria-label="Scroll to contact section"
             className="group absolute cursor-pointer"
             style={{
               left: "calc(100vw - 24px)",
@@ -257,6 +259,7 @@ export function ScrollSidebar() {
           return (
             <button
               key={sectionIdx}
+              aria-label={SECTIONS[sectionIdx].label}
               onClick={() => scrollToSection(SECTIONS[sectionIdx].id)}
               className="absolute left-0 cursor-pointer"
               style={{
