@@ -23,10 +23,11 @@ export function MobileNav() {
     setMounted(true);
   }, []);
 
-  // Focus management: move focus into/out of drawer on open/close
+  // Focus management: defer focus until after the slide-in animation completes
   useEffect(() => {
     if (open) {
-      closeButtonRef.current?.focus();
+      const id = setTimeout(() => closeButtonRef.current?.focus(), 310);
+      return () => clearTimeout(id);
     } else {
       hamburgerRef.current?.focus();
     }
@@ -47,7 +48,7 @@ export function MobileNav() {
       if (!drawer) return;
 
       const focusable = drawer.querySelectorAll<HTMLElement>(
-        'button:not([disabled]), [href], [tabindex]:not([tabindex="-1"])'
+        'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"]):not([aria-hidden="true"])'
       );
       const first = focusable[0];
       const last = focusable[focusable.length - 1];
@@ -69,9 +70,18 @@ export function MobileNav() {
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [open]);
 
+  const navigateTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (navigateTimerRef.current) clearTimeout(navigateTimerRef.current);
+    };
+  }, []);
+
   const navigate = useCallback((id: string) => {
     setOpen(false);
-    setTimeout(() => {
+    if (navigateTimerRef.current) clearTimeout(navigateTimerRef.current);
+    navigateTimerRef.current = setTimeout(() => {
       document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     }, 200);
   }, []);
@@ -97,7 +107,7 @@ export function MobileNav() {
             id="mobile-nav-dialog"
             className="fixed top-0 left-0 h-full w-64 bg-black px-6 py-8 md:hidden"
             aria-hidden={!open}
-            aria-modal={open}
+            aria-modal="true"
             aria-labelledby="mobile-nav-title"
             role="dialog"
             style={{
