@@ -106,7 +106,7 @@ export function MobileNav() {
             ref={drawerRef}
             id="mobile-nav-dialog"
             className="fixed top-0 left-0 h-full w-64 bg-black px-6 py-8 md:hidden"
-            aria-hidden={!open}
+            aria-hidden={open ? undefined : true}
             aria-modal="true"
             aria-labelledby="mobile-nav-title"
             role="dialog"
