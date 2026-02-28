@@ -49,9 +49,9 @@ export function PhilosophySection() {
 
           <div className="mt-14 flex min-h-[180px] items-start justify-center text-center">
             <div className="max-w-[540px]">
-              <h2 className="text-[clamp(24px,3.5vw,32px)] font-medium leading-[1.2] tracking-[-0.02em] text-[var(--gray-12)]">
+              <h3 className="text-[clamp(24px,3.5vw,32px)] font-medium leading-[1.2] tracking-[-0.02em] text-[var(--gray-12)]">
                 {PRINCIPLES[active].title}
-              </h2>
+              </h3>
               <p className="mt-5 text-[15px] leading-[1.7] text-[var(--gray-8)]">
                 {PRINCIPLES[active].description}
               </p>
@@ -66,9 +66,9 @@ export function PhilosophySection() {
               <span className="mb-3 block font-mono text-[12px] tracking-[0.06em] text-[var(--gray-6)]">
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <h2 className="text-[clamp(22px,5vw,28px)] font-medium leading-[1.2] tracking-[-0.02em] text-[var(--gray-12)]">
+              <h3 className="text-[clamp(22px,5vw,28px)] font-medium leading-[1.2] tracking-[-0.02em] text-[var(--gray-12)]">
                 {item.title}
-              </h2>
+              </h3>
               <p className="mt-3 text-[15px] leading-[1.7] text-[var(--gray-8)]">
                 {item.description}
               </p>
