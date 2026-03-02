@@ -8,7 +8,7 @@ export function HeroSection() {
     <>
       <section
         data-brain-reveal
-        className="relative h-screen w-full overflow-hidden bg-[var(--gray-1)]"
+        className="relative h-dvh w-full overflow-hidden bg-[var(--gray-1)]"
       >
         <WaveLines />
         <BrainCanvas />

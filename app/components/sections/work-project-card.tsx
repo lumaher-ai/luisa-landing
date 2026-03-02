@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useRef } from "react";
 import { SignalWave } from "./work-signal-wave";
 import type { Project } from "./work-data";
 
@@ -11,25 +11,8 @@ export function ProjectCard({
   project: Project;
   index: number;
 }) {
-  const cardRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
-  const [expanded, setExpanded] = useState(false);
   const number = String(index + 1).padStart(2, "0");
-
-  // Expand when card enters the center band of the viewport
-  useEffect(() => {
-    const el = cardRef.current;
-    if (!el) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => setExpanded(entry.isIntersecting),
-      // Trigger zone: middle 45% of the viewport
-      { rootMargin: "-27.5% 0px -27.5% 0px", threshold: 0 }
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
 
   const handleTitleEnter = useCallback(() => {
     if (titleRef.current) {
@@ -44,11 +27,10 @@ export function ProjectCard({
   }, []);
 
   return (
-    <div ref={cardRef} className="group relative">
+    <div className="group relative">
       {/* Large ghost number */}
       <span
-        className="pointer-events-none absolute -right-4 top-0 hidden select-none text-[100px] font-medium leading-none transition-colors duration-200 md:block"
-        style={{ color: expanded ? "var(--gray-3)" : "var(--gray-2)" }}
+        className="pointer-events-none absolute -right-4 top-0 hidden select-none text-[100px] font-medium leading-none text-[var(--gray-3)] md:block"
       >
         {number}
       </span>
@@ -78,19 +60,10 @@ export function ProjectCard({
         {project.tagline}
       </p>
 
-      {/* Description — always visible on mobile, scroll-driven on desktop */}
-      <div
-        className="overflow-hidden transition-all duration-500"
-        style={{
-          maxHeight: expanded ? "200px" : "0px",
-          opacity: expanded ? 1 : 0,
-          transitionTimingFunction: "cubic-bezier(0.2, 0.8, 0.2, 1)",
-        }}
-      >
-        <p className="mt-4 max-w-[600px] text-[14px] leading-[1.6] text-[var(--gray-7)]">
-          {project.description}
-        </p>
-      </div>
+      {/* Description */}
+      <p className="mt-4 max-w-[600px] text-[14px] leading-[1.6] text-[var(--gray-7)]">
+        {project.description}
+      </p>
 
       {/* Tech stack */}
       <div className="mt-4 flex flex-wrap gap-x-2 gap-y-1">
@@ -113,42 +86,32 @@ export function ProjectCard({
         signalType={project.signalType}
       />
 
-      {/* Link — scroll-driven expand */}
+      {/* Link */}
       {project.link && project.linkLabel && (
-        <div
-          className="overflow-hidden transition-all duration-300"
-          style={{
-            maxHeight: expanded ? "40px" : "0px",
-            opacity: expanded ? 1 : 0,
-            marginTop: expanded ? "16px" : "0px",
-            transitionTimingFunction: "cubic-bezier(0.2, 0.8, 0.2, 1)",
-          }}
+        <a
+          href={project.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`View ${project.name}, opens in new tab`}
+          className="mt-4 inline-flex items-center gap-1.5 text-[13px] text-blue-400 transition-colors duration-200 hover:text-blue-300"
         >
-          <a
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`View ${project.name}, opens in new tab`}
-            className="inline-flex items-center gap-1.5 text-[13px] text-blue-400 transition-colors duration-200 hover:text-blue-300"
+          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 12 12"
+            fill="none"
+            aria-hidden="true"
           >
-            <svg
-              width="12"
-              height="12"
-              viewBox="0 0 12 12"
-              fill="none"
-              aria-hidden="true"
-            >
-              <path
-                d="M5 2H2a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V7M7.5 1H11m0 0v3.5M11 1 5.5 6.5"
-                stroke="currentColor"
-                strokeWidth="1.2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-            {project.linkLabel}
-          </a>
-        </div>
+            <path
+              d="M5 2H2a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V7M7.5 1H11m0 0v3.5M11 1 5.5 6.5"
+              stroke="currentColor"
+              strokeWidth="1.2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          {project.linkLabel}
+        </a>
       )}
     </div>
   );
