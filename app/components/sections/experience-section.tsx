@@ -6,7 +6,7 @@ import { SectionRevealOverlay } from "./section-reveal-overlay";
 function RoleItem({ role }: { role: Role }) {
   return (
     <li className="my-4 flex items-start gap-4">
-      <span className="mt-1 h-5 w-5 shrink-0 rounded-full bg-[var(--gray-3)]" />
+      <span className="mt-[8px] h-2.5 w-2.5 shrink-0 rounded-full bg-[#FF4D00]" />
       <div>
         <div className="font-medium text-[var(--gray-12)]">
           {role.title}
