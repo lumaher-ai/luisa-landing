@@ -20,7 +20,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: "David Dominguez",
   description:
-    "CTO and AI Engineer building privacy-first intelligence tools. TypeScript, React, LLM routing, and agentic systems.",
+    "CTO and AI Engineer who ships privacy-first AI products from zero to production. Specializing in LLM systems, agentic workflows, and full-stack TypeScript — built for founders, VCs, and engineering leaders who need it done right.",
   metadataBase: new URL("https://daviddominguez.dev"),
   alternates: {
     canonical: "/",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     type: "profile",
     title: "David Dominguez",
     description:
-      "CTO and AI Engineer building privacy-first intelligence tools.",
+      "CTO-for-hire and AI Engineer. I turn ambiguous AI bets into shipped products — privacy-first, production-ready, and built to scale.",
     url: "https://daviddominguez.dev",
     siteName: "David Dominguez",
     locale: "en_US",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "David Dominguez — CTO / AI Engineer / Builder",
+        alt: "David Dominguez — CTO, AI Engineer, and Founder-Ready Technical Leader",
       },
     ],
   },
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "David Dominguez",
     description:
-      "CTO and AI Engineer building privacy-first intelligence tools.",
+      "CTO-for-hire and AI Engineer. I turn ambiguous AI bets into shipped products — privacy-first, production-ready, and built to scale.",
     images: ["/opengraph-image"],
   },
 };
@@ -73,7 +73,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               name: "David Dominguez",
-              jobTitle: "CTO / AI Engineer",
+              jobTitle: "Chief Technology Officer & AI Engineer",
               url: "https://daviddominguez.dev",
               sameAs: [
                 "https://github.com/daviddominguezh/",

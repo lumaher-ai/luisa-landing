@@ -20,16 +20,16 @@ export const COMPANIES: Company[] = [
     location: "Bogot\u00e1",
     accentColor: "rgb(130, 230, 170)",
     metrics: [
-      { value: "12x", label: "Cost Reduction" },
-      { value: "20+", label: "LLM Providers" },
-      { value: "<1s", label: "Avg Latency" },
+      { value: "12x", label: "Cost Savings" },
+      { value: "20+", label: "AI Providers" },
+      { value: "<1s", label: "Response Time" },
     ],
     roles: [
       {
         title: "CTO",
         period: "Sept 2025 \u2014 Present",
         description:
-          "Built an AI sales agent with a multi-step agentic system using dynamic tool orchestration, long-term conversation memory, and reasoning loops. Designed a routing layer across 20+ LLM providers with intent classification, fallbacks, and adaptive model selection to balance costs, latency, and complexity. Reduced inference costs 12x.",
+          "Architected and shipped an AI sales agent from zero, cutting inference costs 12x while maintaining sub-second response times. Built a proprietary routing layer across 20+ LLM providers that dynamically balances cost and performance \u2014 enabling enterprise-grade AI at startup economics.",
       },
     ],
   },
@@ -38,16 +38,16 @@ export const COMPANIES: Company[] = [
     location: "Bogot\u00e1",
     accentColor: "rgb(255, 210, 80)",
     metrics: [
-      { value: "10", label: "Engineers Led" },
       { value: "800K+", label: "Users Scaled" },
-      { value: "99.9%", label: "Availability" },
+      { value: "99.9%", label: "Uptime" },
+      { value: "10", label: "Team Size" },
     ],
     roles: [
       {
         title: "Technical Lead",
         period: "May 2024 \u2014 Sept 2025",
         description:
-          "Led a team of 10 engineers using Docker, Java, React, and TypeScript. Configured monitoring for system availability and performance. Helped the team navigate scaling from the first user to more than 800,000.",
+          "Led a 10-person engineering team through one of the most demanding scaling journeys in Latin American e-commerce \u2014 from zero to 800,000 users while sustaining 99.9% uptime. Owned delivery, architecture decisions, and team growth end-to-end.",
       },
     ],
   },
@@ -65,7 +65,7 @@ export const COMPANIES: Company[] = [
         title: "CTO",
         period: "Aug 2022 \u2014 May 2024",
         description:
-          "Created a client-side IDE for a low-code platform. Built the FE and BE, including a graphics engine and compiler for transforming user interactions into code. This design allowed the product to scale to 1M+ users with virtually zero cost.",
+          "As CTO, designed a client-side architecture that eliminated server infrastructure costs entirely, allowing a low-code platform to scale to 1M+ users at near-zero marginal cost. Built two custom engines \u2014 a graphics engine and a compiler \u2014 to bring the product to life.",
       },
     ],
   },
@@ -74,22 +74,22 @@ export const COMPANIES: Company[] = [
     location: "Bogot\u00e1",
     accentColor: "rgb(255, 120, 180)",
     metrics: [
+      { value: "2x", label: "Team Output" },
       { value: "6", label: "Engineers Led" },
-      { value: "2x", label: "Dev Speed" },
-      { value: "1", label: "Major Client Won" },
+      { value: "1", label: "Enterprise Won" },
     ],
     roles: [
       {
         title: "Lead Developer",
         period: "Dec 2021 \u2014 Aug 2022",
         description:
-          "Convinced the CTO of the agency\u2019s biggest client to hire us for their marketing department\u2019s digital transformation. Led a team of 6 engineers through the milestones while managing the execution of the backlog.",
+          "Landed and retained the agency\u2019s most valuable enterprise client by building direct executive trust with their CTO. Led a team of 6 engineers to deliver their digital transformation.",
       },
       {
         title: "Senior Developer",
         period: "Aug 2021 \u2014 Dec 2021",
         description:
-          "Built web apps for clients. After identifying repetitive scaffolding tasks, built a platform for automated project scaffolding using Kubernetes \u2014 doubling the team\u2019s development speed.",
+          "Identified a development bottleneck and engineered an automated scaffolding platform that doubled the team\u2019s output velocity across all client projects.",
       },
     ],
   },
@@ -99,15 +99,15 @@ export const COMPANIES: Company[] = [
     accentColor: "rgb(180, 130, 255)",
     metrics: [
       { value: "100x", label: "Dev Capacity" },
-      { value: "1000s", label: "Terminals Deployed" },
-      { value: "1", label: "Language Bridge" },
+      { value: "1000s", label: "Terminals" },
+      { value: "10\u2192100s", label: "Devs Unlocked" },
     ],
     roles: [
       {
         title: "Senior Web Developer",
         period: "Dec 2020 \u2014 Aug 2021",
         description:
-          "Presented and developed a Python interpreter for C, allowing hundreds of collaborators to develop the company\u2019s POS devices \u2014 previously only 10 developers could work on them. Led implementation and deployment of thousands of terminals.",
+          "Removed a critical talent bottleneck by building a Python-to-C interpreter that unlocked company-wide development on POS devices \u2014 expanding the capable developer pool from 10 to hundreds. Personally led the deployment of thousands of payment terminals across the network.",
       },
     ],
   },
@@ -118,14 +118,14 @@ export const COMPANIES: Company[] = [
     metrics: [
       { value: "2+", label: "Years" },
       { value: "10+", label: "Projects" },
-      { value: "4", label: "Core Technologies" },
+      { value: "4", label: "Technologies" },
     ],
     roles: [
       {
         title: "Developer",
         period: "Oct 2018 \u2014 Dec 2020",
         description:
-          "Various development roles building web applications and growing fundamentals in TypeScript, React, Node.js, and backend systems.",
+          "Laid the technical foundation across 10+ client projects spanning web applications and full-stack development, establishing deep proficiency in the TypeScript, React, and Node.js stack that underpins all subsequent work.",
       },
     ],
   },

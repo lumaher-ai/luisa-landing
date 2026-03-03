@@ -12,17 +12,17 @@ const PRINCIPLES: PhilosophyItem[] = [
   {
     title: "Privacy is not a feature. It\u2019s the default.",
     description:
-      "Every tool I ship runs on your machine. Your documents, your models, your data. No server ever sees it.",
+      "Every tool I build runs entirely on your machine. Your documents, your models, your data never touch a server. That\u2019s not a selling point \u2014 it\u2019s a compliance guarantee and a liability eliminated before your legal team even asks.",
   },
   {
-    title: "Ship fast. Fix in public.",
+    title: "Ship fast. Iterate in public.",
     description:
-      "The best version is the one someone can use today, not the perfect one that never ships. Iteration beats perfection every time.",
+      "The best version is the one your team can use today, not the perfect one that ships next quarter. I optimize for time-to-value \u2014 real users, real feedback, real improvements. Iteration beats perfection, and momentum beats both.",
   },
   {
-    title: "Good tools stay out of the way.",
+    title: "The best tool is the one nobody notices.",
     description:
-      "A CLI you reach for without thinking. A memory app that just works in the background. The less you notice, the better I did.",
+      "Adoption fails when software demands attention. I build tools that fit existing workflows \u2014 no training sessions, no change management, no resistance. When engineers reach for something without thinking, you know it worked.",
   },
 ];
 

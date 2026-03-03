@@ -65,7 +65,7 @@ export function SignalSection() {
         </p>
 
         <p className="mt-10 max-w-[400px] text-[14px] leading-[1.6] text-[var(--gray-8)]">
-          If you&apos;re building something that matters, let&apos;s talk.
+          I help teams ship faster, build smarter, and scale with confidence. If you have a hard engineering problem or a bold product vision, my inbox is open.
         </p>
 
         <a

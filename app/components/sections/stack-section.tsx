@@ -10,22 +10,22 @@ interface StackItem {
 }
 
 const STACK_ITEMS: StackItem[] = [
-  { name: "TypeScript", level: "primary", subtitle: "primary language, full-stack", years: 7 },
-  { name: "React", level: "primary", subtitle: "UI, web apps, SSR", years: 7 },
-  { name: "Node.js", level: "primary", subtitle: "backend, APIs, services", years: 7 },
-  { name: "Jest", level: "tertiary", subtitle: "unit testing, TDD", years: 7 },
-  { name: "CI/CD", level: "tertiary", subtitle: "pipelines, automation", years: 7 },
-  { name: "MongoDB", level: "secondary", subtitle: "document store, NoSQL", years: 5 },
-  { name: "Docker", level: "primary", subtitle: "containerization, deployment", years: 4 },
-  { name: "AWS", level: "secondary", subtitle: "cloud infrastructure", years: 4 },
-  { name: "GCP", level: "secondary", subtitle: "cloud, ML APIs", years: 4 },
-  { name: "MySQL", level: "secondary", subtitle: "relational databases", years: 4 },
-  { name: "Python", level: "primary", subtitle: "scripting, AI, automation", years: 3 },
-  { name: "AI Agents", level: "primary", subtitle: "multi-step, memory, tools", years: 3 },
-  { name: "Kubernetes", level: "secondary", subtitle: "orchestration, scaling", years: 3 },
-  { name: "React Native", level: "secondary", subtitle: "mobile development", years: 3 },
-  { name: "Java", level: "secondary", subtitle: "enterprise backend", years: 3 },
-  { name: "LLM Routing", level: "primary", subtitle: "multi-provider, fallbacks", years: 2 },
+  { name: "TypeScript", level: "primary", subtitle: "fewer bugs, faster ships", years: 7 },
+  { name: "React", level: "primary", subtitle: "fast, interactive experiences", years: 7 },
+  { name: "Node.js", level: "primary", subtitle: "scalable APIs, real-time ready", years: 7 },
+  { name: "Jest", level: "tertiary", subtitle: "reliable code, confident releases", years: 7 },
+  { name: "CI/CD", level: "tertiary", subtitle: "ships daily, zero downtime", years: 7 },
+  { name: "MongoDB", level: "secondary", subtitle: "flexible data, fast iteration", years: 5 },
+  { name: "Docker", level: "primary", subtitle: "runs anywhere, no surprises", years: 4 },
+  { name: "AWS", level: "secondary", subtitle: "global scale, always on", years: 4 },
+  { name: "GCP", level: "secondary", subtitle: "AI-ready cloud infrastructure", years: 4 },
+  { name: "MySQL", level: "secondary", subtitle: "rock-solid, structured data", years: 4 },
+  { name: "Python", level: "primary", subtitle: "automation, AI, rapid tooling", years: 3 },
+  { name: "AI Agents", level: "primary", subtitle: "autonomous multi-step workflows", years: 3 },
+  { name: "Kubernetes", level: "secondary", subtitle: "self-healing, infinite scale", years: 3 },
+  { name: "React Native", level: "secondary", subtitle: "one codebase, iOS + Android", years: 3 },
+  { name: "Java", level: "secondary", subtitle: "high-throughput enterprise systems", years: 3 },
+  { name: "LLM Routing", level: "primary", subtitle: "best AI model, every time", years: 2 },
 ];
 
 const SORTED_ITEMS = [...STACK_ITEMS].sort((a, b) => b.years - a.years);
