@@ -356,35 +356,57 @@ export function PhilosophyCanvas({ active, onSelect }: Props) {
         const fireGlow = fireDelta > 0 && fireDelta < 0.4 ? 1 - fireDelta / 0.4 : 0;
 
         if (isNodeActive) {
+          // Outer soft glow
           ctx.save();
-          ctx.shadowColor = "rgba(25,80,180,0.18)";
-          ctx.shadowBlur = 35;
+          ctx.shadowColor = "rgba(60,140,255,0.9)";
+          ctx.shadowBlur = 50;
           ctx.beginPath();
-          ctx.arc(sx(node.x), sy(node.y), sw(17), 0, 2 * Math.PI);
-          ctx.fillStyle = "rgba(20,70,160,0.05)";
+          ctx.arc(sx(node.x), sy(node.y), sw(18), 0, 2 * Math.PI);
+          ctx.fillStyle = "rgba(40,110,230,0.1)";
           ctx.fill();
           ctx.restore();
-        }
 
-        ctx.beginPath();
-        ctx.arc(sx(node.x), sy(node.y), sw(14), 0, 2 * Math.PI);
-        ctx.strokeStyle = "rgba(255,255,255,0.1)";
-        ctx.lineWidth = 1;
-        ctx.stroke();
-
-        if (fireGlow > 0) {
+          // Bright ring
+          ctx.save();
+          ctx.shadowColor = "rgba(60,140,255,0.6)";
+          ctx.shadowBlur = 20;
           ctx.beginPath();
-          ctx.arc(sx(node.x), sy(node.y), sw(14 + 6 * fireGlow), 0, 2 * Math.PI);
-          ctx.strokeStyle = `rgba(30,90,190,${(0.6 * fireGlow).toFixed(3)})`;
-          ctx.lineWidth = 1.8;
+          ctx.arc(sx(node.x), sy(node.y), sw(14), 0, 2 * Math.PI);
+          ctx.strokeStyle = "rgba(80,160,255,0.5)";
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+          ctx.restore();
+        } else {
+          ctx.beginPath();
+          ctx.arc(sx(node.x), sy(node.y), sw(14), 0, 2 * Math.PI);
+          ctx.strokeStyle = "rgba(255,255,255,0.1)";
+          ctx.lineWidth = 1;
           ctx.stroke();
         }
 
-        const dotRadius = isNodeActive ? 4.5 : 3;
+        if (fireGlow > 0) {
+          ctx.save();
+          ctx.shadowColor = `rgba(60,140,255,${(0.8 * fireGlow).toFixed(3)})`;
+          ctx.shadowBlur = 30;
+          ctx.beginPath();
+          ctx.arc(sx(node.x), sy(node.y), sw(14 + 8 * fireGlow), 0, 2 * Math.PI);
+          ctx.strokeStyle = `rgba(80,160,255,${(0.9 * fireGlow).toFixed(3)})`;
+          ctx.lineWidth = 2;
+          ctx.stroke();
+          ctx.restore();
+        }
+
+        const dotRadius = isNodeActive ? 5 : 3;
+        ctx.save();
+        if (isNodeActive) {
+          ctx.shadowColor = "rgba(60,140,255,0.9)";
+          ctx.shadowBlur = 18;
+        }
         ctx.beginPath();
         ctx.arc(sx(node.x), sy(node.y), sw(dotRadius), 0, 2 * Math.PI);
-        ctx.fillStyle = isNodeActive ? "rgb(55,120,210)" : "rgba(255,255,255,0.3)";
+        ctx.fillStyle = isNodeActive ? "rgb(90,170,255)" : "rgba(255,255,255,0.3)";
         ctx.fill();
+        ctx.restore();
       }
 
       ctx.restore();
@@ -418,12 +440,13 @@ export function PhilosophyCanvas({ active, onSelect }: Props) {
         {NODE_PERCENTS.map((pct, i) => (
           <span
             key={i}
-            className="absolute font-mono text-[12px] tracking-[0.06em] transition-colors duration-300"
+            className="absolute font-mono text-[12px] tracking-[0.06em] transition-all duration-300"
             style={{
               left: `${pct}%`,
               transform: "translateX(-50%)",
               top: 4,
               color: active === i ? "var(--gray-12)" : "var(--gray-6)",
+              textShadow: "none",
             }}
           >
             {String(i + 1).padStart(2, "0")}

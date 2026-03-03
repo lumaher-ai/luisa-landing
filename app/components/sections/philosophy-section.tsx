@@ -49,7 +49,10 @@ export function PhilosophySection() {
 
           <div className="mt-14 flex min-h-[180px] items-start justify-center text-center">
             <div className="max-w-[540px]">
-              <h3 className="text-[clamp(24px,3.5vw,32px)] font-medium leading-[1.2] tracking-[-0.02em] text-[var(--gray-12)]">
+              <h3
+                className="text-[clamp(24px,3.5vw,32px)] font-medium leading-[1.2] tracking-[-0.02em] text-[var(--gray-12)]"
+                style={{ textShadow: "none" }}
+              >
                 {PRINCIPLES[active].title}
               </h3>
               <p className="mt-5 text-[15px] leading-[1.7] text-[var(--gray-8)]">
