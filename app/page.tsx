@@ -21,13 +21,16 @@ export default function Home() {
       <Navbar />
       <ScrollSidebar />
       <HeroSection />
-      <ExperienceSection />
-      <PhilosophySection />
-      <WorkSection />
-      <StackSection />
-      <EducationSection />
-      <SignalSection />
-      <Footer />
+      {/* Content slides over the sticky hero */}
+      <div className="relative z-10 bg-[var(--gray-1)]">
+        <ExperienceSection />
+        <PhilosophySection />
+        <WorkSection />
+        <StackSection />
+        <EducationSection />
+        <SignalSection />
+        <Footer />
+      </div>
     </main>
   );
 }
