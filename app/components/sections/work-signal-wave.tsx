@@ -10,18 +10,22 @@ import {
 interface SignalWaveProps {
   accentColor: string;
   signalType: SignalType;
+  active?: boolean;
 }
 
 function parseRgb(color: string): string {
   return color.replace("rgb(", "").replace(")", "");
 }
 
-export function SignalWave({ accentColor, signalType }: SignalWaveProps) {
+export function SignalWave({ accentColor, signalType, active = false }: SignalWaveProps) {
   const svgRef = useRef<SVGSVGElement>(null);
   const pathRef = useRef<SVGPathElement>(null);
   const cursorXRef = useRef(0.5);
   const hoveringRef = useRef(false);
   const [inView, setInView] = useState(false);
+
+  const activeRef = useRef(active);
+  activeRef.current = active;
 
   const generator = getSignalGenerator(signalType);
   const rgb = parseRgb(accentColor);
@@ -44,7 +48,8 @@ export function SignalWave({ accentColor, signalType }: SignalWaveProps) {
       const phase =
         0.02 * Math.sin(0.8 * dt) +
         (cursorXRef.current - 0.5) * 0.15;
-      const amplitude = hoveringRef.current ? 0.85 : 0.55;
+      const isActive = hoveringRef.current || activeRef.current;
+      const amplitude = isActive ? 0.85 : 0.55;
       const pointCount = Math.floor(SIGNAL_POINTS * progress);
 
       const parts: string[] = [];
@@ -63,11 +68,11 @@ export function SignalWave({ accentColor, signalType }: SignalWaveProps) {
         path.setAttribute("d", parts.join(""));
         path.setAttribute(
           "stroke",
-          `rgba(${rgb}, ${hoveringRef.current ? 0.75 : 0.25})`
+          `rgba(${rgb}, ${isActive ? 0.75 : 0.25})`
         );
         path.setAttribute(
           "stroke-width",
-          hoveringRef.current ? "1.5" : "1"
+          isActive ? "1.5" : "1"
         );
       }
 

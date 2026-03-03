@@ -52,7 +52,8 @@ export function ProjectCard({
     <div ref={cardRef} className="group relative">
       {/* Large ghost number */}
       <span
-        className="pointer-events-none absolute -right-4 top-0 hidden select-none text-[100px] font-medium leading-none text-[var(--gray-3)] md:block"
+        className="pointer-events-none absolute -right-4 top-0 hidden select-none text-[100px] font-medium leading-none transition-colors duration-500 md:block"
+        style={{ color: inView ? project.accentColor : "var(--gray-3)" }}
       >
         {number}
       </span>
@@ -112,6 +113,7 @@ export function ProjectCard({
       <SignalWave
         accentColor={project.accentColor}
         signalType={project.signalType}
+        active={inView}
       />
 
       {/* Link */}
