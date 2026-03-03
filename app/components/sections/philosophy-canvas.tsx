@@ -238,13 +238,13 @@ export function PhilosophyCanvas({ active, onSelect }: Props) {
 
     // Seed initial pulses
     for (let ax = 0; ax < 2; ax++) {
-      for (let j = 0; j < 3; j++) {
+      for (let j = 0; j < 4; j++) {
         st.pulses.push({
           ax,
           pos: pseudoRandom(100 * ax + 31 * j + 11),
-          spd: 0.12 + 0.18 * pseudoRandom(50 * ax + 19 * j + 7),
-          width: 0.14 + 0.08 * pseudoRandom(30 * ax + 23 * j),
-          peak: 0.3 + 0.15 * pseudoRandom(70 * ax + 13 * j),
+          spd: 0.15 + 0.2 * pseudoRandom(50 * ax + 19 * j + 7),
+          width: 0.16 + 0.1 * pseudoRandom(30 * ax + 23 * j),
+          peak: 0.55 + 0.3 * pseudoRandom(70 * ax + 13 * j),
           burst: false,
         });
       }
@@ -295,7 +295,7 @@ export function PhilosophyCanvas({ active, onSelect }: Props) {
           start: st.time,
           dur: 0.12,
         });
-        st.nextFlash = 1 + 2 * pseudoRandom(300 * st.time);
+        st.nextFlash = 0.4 + 1.2 * pseudoRandom(300 * st.time);
       }
       st.flashes = st.flashes.filter((f) => st.time - f.start < f.dur);
 
@@ -322,7 +322,12 @@ export function PhilosophyCanvas({ active, onSelect }: Props) {
       for (let a = 0; a < 2; a++) {
         const axon = AXONS[a];
         const isAx = (a === 0 && st.active >= 1) || (a === 1 && st.active >= 2);
-        const baseAlpha = 0.06 + 0.02 * Math.sin(7 * g + 2.5 * a);
+        const baseAlpha = 0.25 + 0.06 * Math.sin(7 * g + 2.5 * a);
+        ctx.save();
+        if (isAx) {
+          ctx.shadowColor = "rgba(60,140,255,0.4)";
+          ctx.shadowBlur = 12;
+        }
         ctx.beginPath();
         ctx.moveTo(sx(axon.p0.x), sy(axon.p0.y));
         ctx.bezierCurveTo(
@@ -331,10 +336,11 @@ export function PhilosophyCanvas({ active, onSelect }: Props) {
           sx(axon.p1.x), sy(axon.p1.y)
         );
         ctx.strokeStyle = isAx
-          ? `rgba(15,60,140,${(baseAlpha + 0.12).toFixed(3)})`
-          : `rgba(255,255,255,${baseAlpha.toFixed(3)})`;
-        ctx.lineWidth = isAx ? 1 : 0.5;
+          ? `rgba(70,150,255,${(baseAlpha + 0.35).toFixed(3)})`
+          : `rgba(255,255,255,${(baseAlpha).toFixed(3)})`;
+        ctx.lineWidth = isAx ? 2 : 1;
         ctx.stroke();
+        ctx.restore();
       }
 
       // Draw pulses
@@ -348,22 +354,27 @@ export function PhilosophyCanvas({ active, onSelect }: Props) {
         if (hi <= 0 || lo >= 1) continue;
 
         const isAx = (p.ax === 0 && st.active >= 1) || (p.ax === 1 && st.active >= 2);
-        const strength = p.burst || isAx ? p.peak : 0.35 * p.peak;
+        const strength = p.burst || isAx ? p.peak : 0.7 * p.peak;
 
-        ctx.globalAlpha = 0.15 * strength;
-        ctx.strokeStyle = "rgb(15,60,140)";
-        ctx.lineWidth = sw(p.burst ? 12 : 8);
+        ctx.save();
+        ctx.shadowColor = "rgba(60,140,255,0.5)";
+        ctx.shadowBlur = 10;
+
+        ctx.globalAlpha = 0.5 * strength;
+        ctx.strokeStyle = "rgb(50,120,230)";
+        ctx.lineWidth = sw(p.burst ? 16 : 12);
         drawSegment(ctx, pts, Math.max(0, lo), Math.min(1, hi), sx, sy, 4);
 
-        ctx.globalAlpha = 0.35 * strength;
-        ctx.lineWidth = sw(p.burst ? 5 : 3);
+        ctx.globalAlpha = 0.8 * strength;
+        ctx.lineWidth = sw(p.burst ? 7 : 5);
         drawSegment(ctx, pts, Math.max(0, lo), Math.min(1, hi), sx, sy, 4);
 
-        ctx.globalAlpha = strength * (p.burst ? 0.85 : 0.6);
-        ctx.strokeStyle = p.burst ? "rgb(200,220,255)" : "rgb(45,110,200)";
-        ctx.lineWidth = sw(p.burst ? 2 : 1.2);
+        ctx.globalAlpha = strength;
+        ctx.strokeStyle = p.burst ? "rgb(220,235,255)" : "rgb(120,180,255)";
+        ctx.lineWidth = sw(p.burst ? 3 : 2);
         drawSegment(ctx, pts, Math.max(0, lo), Math.min(1, hi), sx, sy, 4);
 
+        ctx.restore();
         ctx.globalAlpha = 1;
       }
 
@@ -373,15 +384,15 @@ export function PhilosophyCanvas({ active, onSelect }: Props) {
           const pts = CURVES[ax];
           if (!pts) continue;
           const prog = st.burstRev ? 1 - st.burstP : st.burstP;
-          const lo = Math.max(0, prog - 0.12);
-          const hi = Math.min(1, prog + 0.12);
+          const lo = Math.max(0, prog - 0.18);
+          const hi = Math.min(1, prog + 0.18);
           ctx.save();
           ctx.lineCap = "round";
-          ctx.shadowColor = "rgba(15,60,140,0.6)";
-          ctx.shadowBlur = 16;
-          ctx.globalAlpha = 0.9;
-          ctx.strokeStyle = "rgb(200,220,255)";
-          ctx.lineWidth = sw(4);
+          ctx.shadowColor = "rgba(80,160,255,1)";
+          ctx.shadowBlur = 40;
+          ctx.globalAlpha = 1;
+          ctx.strokeStyle = "rgb(230,240,255)";
+          ctx.lineWidth = sw(6);
           drawSegment(ctx, pts, lo, hi, sx, sy, 2);
           ctx.restore();
         }
@@ -395,8 +406,13 @@ export function PhilosophyCanvas({ active, onSelect }: Props) {
         const pt = CURVES[den.a][Math.round(CURVE_STEPS * den.t)];
         const ex = pt.x + den.dx;
         const ey = pt.y + den.dy;
-        const alpha = isFlashing ? 0.55 : isDenAct ? 0.1 : 0.04;
+        const alpha = isFlashing ? 1 : isDenAct ? 0.4 : 0.2;
 
+        ctx.save();
+        if (isFlashing) {
+          ctx.shadowColor = "rgba(100,170,255,0.7)";
+          ctx.shadowBlur = 8;
+        }
         ctx.beginPath();
         ctx.moveTo(sx(pt.x), sy(pt.y));
         ctx.quadraticCurveTo(
@@ -404,17 +420,18 @@ export function PhilosophyCanvas({ active, onSelect }: Props) {
           sx(ex), sy(ey)
         );
         ctx.strokeStyle = isDenAct || isFlashing
-          ? `rgba(15,60,140,${alpha.toFixed(3)})`
+          ? `rgba(80,160,255,${alpha.toFixed(3)})`
           : `rgba(255,255,255,${alpha.toFixed(3)})`;
-        ctx.lineWidth = isFlashing ? 1 : 0.6;
+        ctx.lineWidth = isFlashing ? 2 : 1;
         ctx.stroke();
 
         ctx.beginPath();
-        ctx.arc(sx(ex), sy(ey), sw(1.3), 0, 2 * Math.PI);
+        ctx.arc(sx(ex), sy(ey), sw(2.2), 0, 2 * Math.PI);
         ctx.fillStyle = isDenAct || isFlashing
-          ? `rgba(15,60,140,${(0.6 * alpha).toFixed(3)})`
-          : `rgba(255,255,255,${(0.4 * alpha).toFixed(3)})`;
+          ? `rgba(100,170,255,${(0.8 * alpha).toFixed(3)})`
+          : `rgba(255,255,255,${(0.6 * alpha).toFixed(3)})`;
         ctx.fill();
+        ctx.restore();
       }
 
       // Draw nodes
@@ -427,34 +444,46 @@ export function PhilosophyCanvas({ active, onSelect }: Props) {
 
         if (isNodeActive) {
           ctx.save();
-          ctx.shadowColor = "rgba(15,60,140,0.12)";
-          ctx.shadowBlur = 30;
+          ctx.shadowColor = "rgba(80,160,255,0.6)";
+          ctx.shadowBlur = 50;
           ctx.beginPath();
-          ctx.arc(sx(node.x), sy(node.y), sw(16), 0, 2 * Math.PI);
-          ctx.fillStyle = "rgba(15,60,140,0.03)";
+          ctx.arc(sx(node.x), sy(node.y), sw(20), 0, 2 * Math.PI);
+          ctx.fillStyle = "rgba(60,140,255,0.12)";
           ctx.fill();
           ctx.restore();
         }
 
         ctx.beginPath();
         ctx.arc(sx(node.x), sy(node.y), sw(14), 0, 2 * Math.PI);
-        ctx.strokeStyle = "rgba(255,255,255,0.07)";
-        ctx.lineWidth = 1;
+        ctx.strokeStyle = isNodeActive
+          ? "rgba(100,175,255,0.45)"
+          : "rgba(255,255,255,0.2)";
+        ctx.lineWidth = isNodeActive ? 1.5 : 1;
         ctx.stroke();
 
         if (fireGlow > 0) {
+          ctx.save();
+          ctx.shadowColor = `rgba(100,180,255,${(0.8 * fireGlow).toFixed(3)})`;
+          ctx.shadowBlur = 35;
           ctx.beginPath();
-          ctx.arc(sx(node.x), sy(node.y), sw(14 + 6 * fireGlow), 0, 2 * Math.PI);
-          ctx.strokeStyle = `rgba(15,60,140,${(0.5 * fireGlow).toFixed(3)})`;
-          ctx.lineWidth = 1.5;
+          ctx.arc(sx(node.x), sy(node.y), sw(14 + 10 * fireGlow), 0, 2 * Math.PI);
+          ctx.strokeStyle = `rgba(100,180,255,${(0.9 * fireGlow).toFixed(3)})`;
+          ctx.lineWidth = 2.5;
           ctx.stroke();
+          ctx.restore();
         }
 
-        const dotRadius = isNodeActive ? 4 : 2.5;
+        const dotRadius = isNodeActive ? 6 : 4;
+        ctx.save();
+        if (isNodeActive) {
+          ctx.shadowColor = "rgba(100,180,255,0.8)";
+          ctx.shadowBlur = 15;
+        }
         ctx.beginPath();
         ctx.arc(sx(node.x), sy(node.y), sw(dotRadius), 0, 2 * Math.PI);
-        ctx.fillStyle = isNodeActive ? "rgb(45,110,200)" : "rgba(255,255,255,0.25)";
+        ctx.fillStyle = isNodeActive ? "rgb(120,190,255)" : "rgba(255,255,255,0.5)";
         ctx.fill();
+        ctx.restore();
       }
 
       ctx.restore();

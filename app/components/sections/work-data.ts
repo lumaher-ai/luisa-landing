@@ -1,3 +1,4 @@
+import type { Metric } from "./metric-card-types";
 import type { SignalType } from "./signal-generators";
 
 export interface Project {
@@ -9,6 +10,7 @@ export interface Project {
   stack: string[];
   accentColor: string;
   signalType: SignalType;
+  metrics: Metric[];
   link?: string;
   linkLabel?: string;
 }
@@ -24,6 +26,11 @@ export const PROJECTS: Project[] = [
     stack: ["TypeScript", "Node.js", "LLM Routing", "Semantic Search"],
     accentColor: "rgb(130, 230, 170)",
     signalType: "complex",
+    metrics: [
+      { value: "12x", label: "Cost Reduction" },
+      { value: "20+", label: "Providers Routed" },
+      { value: "<1s", label: "Avg Latency" },
+    ],
     link: "https://usecloser.ai",
     linkLabel: "usecloser.ai",
   },
@@ -37,6 +44,11 @@ export const PROJECTS: Project[] = [
     stack: ["TypeScript", "Node.js", "Redis", "LLM APIs"],
     accentColor: "rgb(100, 180, 255)",
     signalType: "sawtooth",
+    metrics: [
+      { value: "6", label: "Limit Types" },
+      { value: "0", label: "Proxies Needed" },
+      { value: "Redis", label: "Distributed" },
+    ],
     link: "https://github.com/daviddominguezh/llm-rate-limiter",
     linkLabel: "github.com/daviddominguezh/llm-rate-limiter",
   },
@@ -50,6 +62,11 @@ export const PROJECTS: Project[] = [
     stack: ["TypeScript", "Node.js", "NLP", "WhatsApp"],
     accentColor: "rgb(232, 168, 94)",
     signalType: "harmonic",
+    metrics: [
+      { value: "17", label: "GitHub Stars" },
+      { value: "0", label: "Config Lines" },
+      { value: "1", label: "Function Call" },
+    ],
     link: "https://github.com/daviddominguezh/llm-markdown-whatsapp",
     linkLabel: "github.com/daviddominguezh/llm-markdown-whatsapp",
   },
@@ -63,6 +80,11 @@ export const PROJECTS: Project[] = [
     stack: ["TypeScript", "Node.js", "Graph DB", "Agents"],
     accentColor: "rgb(180, 130, 255)",
     signalType: "sine",
+    metrics: [
+      { value: "N:N", label: "Entity Relations" },
+      { value: "Typed", label: "Schema" },
+      { value: "0", label: "Setup Required" },
+    ],
     link: "https://github.com/daviddominguezh/llm-graph-builder",
     linkLabel: "github.com/daviddominguezh/llm-graph-builder",
   },
@@ -76,6 +98,11 @@ export const PROJECTS: Project[] = [
     stack: ["React", "TypeScript", "Graphics Engine", "Compiler"],
     accentColor: "rgb(200, 200, 220)",
     signalType: "square",
+    metrics: [
+      { value: "1M+", label: "Users" },
+      { value: "~$0", label: "Infra Cost" },
+      { value: "1", label: "Client-Side IDE" },
+    ],
   },
   {
     name: "MercadoLibre",
@@ -87,6 +114,11 @@ export const PROJECTS: Project[] = [
     stack: ["Java", "React", "TypeScript", "Docker"],
     accentColor: "rgb(255, 210, 80)",
     signalType: "complex",
+    metrics: [
+      { value: "10", label: "Engineers Led" },
+      { value: "800K+", label: "Users Scaled" },
+      { value: "24/7", label: "Monitoring" },
+    ],
     link: "https://www.mercadolibre.com.mx/l/afiliados",
     linkLabel: "mercadolibre.com.mx/l/afiliados",
   },
@@ -100,6 +132,11 @@ export const PROJECTS: Project[] = [
     stack: ["Python", "C", "Embedded", "Jenkins"],
     accentColor: "rgb(180, 130, 255)",
     signalType: "harmonic",
+    metrics: [
+      { value: "100x", label: "Dev Capacity" },
+      { value: "1000s", label: "Terminals" },
+      { value: "Py\u2192C", label: "Bridge" },
+    ],
   },
   {
     name: "K8s Scaffolding Platform",
@@ -111,5 +148,10 @@ export const PROJECTS: Project[] = [
     stack: ["Kubernetes", "Docker", "Node.js", "CI/CD"],
     accentColor: "rgb(130, 210, 180)",
     signalType: "sawtooth",
+    metrics: [
+      { value: "2x", label: "Dev Velocity" },
+      { value: "0", label: "Manual Steps" },
+      { value: "K8s", label: "Powered" },
+    ],
   },
 ];

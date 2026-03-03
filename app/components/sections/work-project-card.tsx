@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useRef } from "react";
+import { MetricCards } from "./metric-cards";
 import { SignalWave } from "./work-signal-wave";
 import type { Project } from "./work-data";
 
@@ -64,6 +65,12 @@ export function ProjectCard({
       <p className="mt-4 max-w-[600px] text-[14px] leading-[1.6] text-[var(--gray-7)]">
         {project.description}
       </p>
+
+      {/* Metric cards */}
+      <MetricCards
+        metrics={project.metrics}
+        accentColor={project.accentColor}
+      />
 
       {/* Tech stack */}
       <div className="mt-4 flex flex-wrap gap-x-2 gap-y-1">

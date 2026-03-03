@@ -1,95 +1,6 @@
-interface Role {
-  title: string;
-  period: string;
-  description: string;
-}
-
-interface Company {
-  name: string;
-  location: string;
-  roles: Role[];
-}
-
-const COMPANIES: Company[] = [
-  {
-    name: "Closer AI",
-    location: "Bogotá",
-    roles: [
-      {
-        title: "CTO",
-        period: "Sept 2025 \u2014 Present",
-        description:
-          "Built an AI sales agent with a multi-step agentic system using dynamic tool orchestration, long-term conversation memory, and reasoning loops. Designed a routing layer across 20+ LLM providers with intent classification, fallbacks, and adaptive model selection to balance costs, latency, and complexity. Reduced inference costs 12x.",
-      },
-    ],
-  },
-  {
-    name: "MercadoLibre",
-    location: "Bogotá",
-    roles: [
-      {
-        title: "Technical Lead",
-        period: "May 2024 \u2014 Sept 2025",
-        description:
-          "Led a team of 10 engineers using Docker, Java, React, and TypeScript. Configured monitoring for system availability and performance. Helped the team navigate scaling from the first user to more than 800,000.",
-      },
-    ],
-  },
-  {
-    name: "Agua",
-    location: "Bogotá",
-    roles: [
-      {
-        title: "CTO",
-        period: "Aug 2022 \u2014 May 2024",
-        description:
-          "Created a client-side IDE for a low-code platform. Built the FE and BE, including a graphics engine and compiler for transforming user interactions into code. This design allowed the product to scale to 1M+ users with virtually zero cost.",
-      },
-    ],
-  },
-  {
-    name: "Mr. Pink",
-    location: "Bogotá",
-    roles: [
-      {
-        title: "Lead Developer",
-        period: "Dec 2021 \u2014 Aug 2022",
-        description:
-          "Convinced the CTO of the agency\u2019s biggest client to hire us for their marketing department\u2019s digital transformation. Led a team of 6 engineers through the milestones while managing the execution of the backlog.",
-      },
-      {
-        title: "Senior Developer",
-        period: "Aug 2021 \u2014 Dec 2021",
-        description:
-          "Built web apps for clients. After identifying repetitive scaffolding tasks, built a platform for automated project scaffolding using Kubernetes \u2014 doubling the team\u2019s development speed.",
-      },
-    ],
-  },
-  {
-    name: "Credibanco",
-    location: "Bogotá",
-    roles: [
-      {
-        title: "Senior Web Developer",
-        period: "Dec 2020 \u2014 Aug 2021",
-        description:
-          "Presented and developed a Python interpreter for C, allowing hundreds of collaborators to develop the company\u2019s POS devices \u2014 previously only 10 developers could work on them. Led implementation and deployment of thousands of terminals.",
-      },
-    ],
-  },
-  {
-    name: "Other dev jobs",
-    location: "Bogotá",
-    roles: [
-      {
-        title: "Developer",
-        period: "Oct 2018 \u2014 Dec 2020",
-        description:
-          "Various development roles building web applications and growing fundamentals in TypeScript, React, Node.js, and backend systems.",
-      },
-    ],
-  },
-];
+import { COMPANIES } from "./experience-data";
+import type { Company, Role } from "./experience-data";
+import { MetricCards } from "./metric-cards";
 
 function RoleItem({ role }: { role: Role }) {
   return (
@@ -124,6 +35,10 @@ function CompanyBlock({ company }: { company: Company }) {
           <RoleItem key={role.title} role={role} />
         ))}
       </ul>
+      <MetricCards
+        metrics={company.metrics}
+        accentColor={company.accentColor}
+      />
     </div>
   );
 }
