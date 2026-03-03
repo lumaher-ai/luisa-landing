@@ -78,9 +78,13 @@ export function ScrollSidebar() {
   const [activeSection, setActiveSection] = useState(0);
   const [tickWidths, setTickWidths] = useState(() => TICKS.map((t) => t.w));
   const [indicatorY, setIndicatorY] = useState(0);
+  const [sectionBarPositions, setSectionBarPositions] = useState<number[]>(
+    () => SECTION_TICK_INDICES.map((ti) => ti * TICK_SPACING)
+  );
   const positionRef = useRef(0);
   const targetRef = useRef(0);
   const rafRef = useRef(0);
+  const lastLogRef = useRef(0);
 
   const updateTickWidths = useCallback((pos: number) => {
     setTickWidths(
@@ -119,25 +123,53 @@ export function ScrollSidebar() {
 
     if (!show) return;
 
-    const scrollable = document.body.scrollHeight - winH - heroBottom;
-    if (scrollable <= 0) return;
+    // Measure real section tops and bottoms (page-absolute)
+    const viewCenter = scrollY + winH / 2;
+    const sectionTops: number[] = [];
+    const sectionBottoms: number[] = [];
+    for (const sec of SECTIONS) {
+      const el = document.getElementById(sec.id);
+      if (el) {
+        const rect = el.getBoundingClientRect();
+        const top = rect.top + scrollY;
+        sectionTops.push(top);
+        sectionBottoms.push(top + rect.height);
+      } else {
+        sectionTops.push(0);
+        sectionBottoms.push(0);
+      }
+    }
 
-    const progress = Math.min(
-      Math.max((scrollY - heroBottom + 0.4 * winH) / scrollable, 0),
-      1
-    );
-    targetRef.current = progress * TOTAL_HEIGHT;
+    // Compute proportional bar positions for section labels
+    const contentStart = sectionTops[0];
+    const contentEnd = sectionBottoms[sectionBottoms.length - 1];
+    const contentRange = contentEnd - contentStart;
+    const margin = TOTAL_HEIGHT * 0.06;
+    const barRange = TOTAL_HEIGHT - 2 * margin;
 
-    const checkY = scrollY + 0.45 * winH;
+    if (contentRange > 0) {
+      const newPositions = sectionTops.map((top) => {
+        const t = (top - contentStart) / contentRange;
+        return margin + t * barRange;
+      });
+      setSectionBarPositions(newPositions);
+    }
+
+    // Active section = last section whose top has passed the viewport center
     let current = 0;
     for (let i = SECTIONS.length - 1; i >= 0; i--) {
-      const el = document.getElementById(SECTIONS[i].id);
-      if (el && el.offsetTop <= checkY) {
+      if (sectionTops[i] <= viewCenter) {
         current = i;
         break;
       }
     }
     setActiveSection(current);
+
+    // Indicator: same proportional mapping as section labels
+    if (contentRange > 0) {
+      const t = (viewCenter - contentStart) / contentRange;
+      targetRef.current = margin + Math.min(1, Math.max(0, t)) * barRange;
+    }
   }, []);
 
   useEffect(() => {
@@ -248,17 +280,17 @@ export function ScrollSidebar() {
           </button>
         </div>
 
-        {/* Section labels */}
-        {SECTION_TICK_INDICES.map((tickIdx, sectionIdx) => {
+        {/* Section labels — positioned proportionally to actual page layout */}
+        {SECTIONS.map((sec, sectionIdx) => {
           const isActive = activeSection === sectionIdx;
           return (
             <button
               key={sectionIdx}
-              aria-label={`Scroll to ${SECTIONS[sectionIdx].label} section`}
-              onClick={() => scrollToSection(SECTIONS[sectionIdx].id)}
+              aria-label={`Scroll to ${sec.label} section`}
+              onClick={() => scrollToSection(sec.id)}
               className="absolute left-0 cursor-pointer"
               style={{
-                top: TICK_SPACING * tickIdx - 14,
+                top: sectionBarPositions[sectionIdx] - 14,
                 height: 28,
                 paddingLeft: 42,
                 display: "flex",
@@ -276,7 +308,7 @@ export function ScrollSidebar() {
                     "opacity 0.35s ease, transform 0.35s ease, filter 0.35s ease, color 0.35s ease",
                 }}
               >
-                {SECTIONS[sectionIdx].label}
+                {sec.label}
               </span>
             </button>
           );
