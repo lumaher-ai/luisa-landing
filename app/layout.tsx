@@ -20,7 +20,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: "David Dominguez",
   description:
-    "CTO and AI Engineer who ships privacy-first AI products from zero to production. Specializing in LLM systems, agentic workflows, and full-stack TypeScript — built for founders, VCs, and engineering leaders who need it done right.",
+    "CTO and AI Engineer who has scaled products to 1M+ users at near-zero cost and cut AI inference spend by 12x. Rare combination of production LLM architecture, agentic systems, and founding-team judgment — the technical hire that unblocks growth and protects margins.",
   metadataBase: new URL("https://daviddominguez.dev"),
   alternates: {
     canonical: "/",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     type: "profile",
     title: "David Dominguez",
     description:
-      "CTO-for-hire and AI Engineer. I turn ambiguous AI bets into shipped products — privacy-first, production-ready, and built to scale.",
+      "I turn ambiguous AI bets into revenue-generating products. If your AI initiative is months behind and millions at stake, I\u2019m the call you make.",
     url: "https://daviddominguez.dev",
     siteName: "David Dominguez",
     locale: "en_US",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "David Dominguez — CTO, AI Engineer, and Founder-Ready Technical Leader",
+        alt: "David Dominguez — CTO and AI Engineer who ships LLM systems that generate revenue and unblock growth",
       },
     ],
   },
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "David Dominguez",
     description:
-      "CTO-for-hire and AI Engineer. I turn ambiguous AI bets into shipped products — privacy-first, production-ready, and built to scale.",
+      "I turn ambiguous AI bets into revenue-generating products. If your AI initiative is months behind and millions at stake, I\u2019m the call you make.",
     images: ["/opengraph-image"],
   },
 };
@@ -73,7 +73,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               name: "David Dominguez",
-              jobTitle: "Chief Technology Officer & AI Engineer",
+              jobTitle: "Chief Technology Officer & AI Systems Architect",
               url: "https://daviddominguez.dev",
               sameAs: [
                 "https://github.com/daviddominguezh/",

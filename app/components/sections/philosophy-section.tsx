@@ -10,19 +10,19 @@ interface PhilosophyItem {
 
 const PRINCIPLES: PhilosophyItem[] = [
   {
-    title: "Privacy is not a feature. It\u2019s the default.",
+    title: "Privacy is architecture, not a setting.",
     description:
-      "Every tool I build runs entirely on your machine. Your documents, your models, your data never touch a server. That\u2019s not a selling point \u2014 it\u2019s a compliance guarantee and a liability eliminated before your legal team even asks.",
+      "Every tool I build runs entirely on your machine. No server calls, no third-party models, no data egress \u2014 ever. That\u2019s not a privacy policy, it\u2019s an architectural guarantee. When your legal team asks, the answer is already built in. When a breach happens to your competitor, it\u2019s a non-event for you.",
   },
   {
-    title: "Ship fast. Iterate in public.",
+    title: "Speed is a strategy. Waiting is a decision.",
     description:
-      "The best version is the one your team can use today, not the perfect one that ships next quarter. I optimize for time-to-value \u2014 real users, real feedback, real improvements. Iteration beats perfection, and momentum beats both.",
+      "Every week a tool isn\u2019t in production is a week your team is working around the problem instead of past it. I optimize for time-to-value \u2014 scoped releases, real users, real feedback \u2014 because the compounding cost of delay is invisible until it isn\u2019t. Momentum is not a soft metric. It is the difference between a capability your organization has and one it\u2019s still planning.",
   },
   {
-    title: "The best tool is the one nobody notices.",
+    title: "Adoption is an engineering problem.",
     description:
-      "Adoption fails when software demands attention. I build tools that fit existing workflows \u2014 no training sessions, no change management, no resistance. When engineers reach for something without thinking, you know it worked.",
+      "A tool that requires training has already failed. I build for zero-friction adoption \u2014 fitting existing workflows, existing habits, existing mental models \u2014 because the hidden cost of software is never the license. It\u2019s the change management, the resistance, the workarounds your team builds around tools they were told to use.",
   },
 ];
 
@@ -71,14 +71,14 @@ export function PhilosophySection() {
           <PhilosophyCanvas active={active} onSelect={handleSelect} />
 
           <div className="mt-14 flex min-h-[180px] items-start justify-center text-center">
-            <div className="max-w-[540px]">
+            <div className="max-w-[650px]">
               <h3
                 className="text-[clamp(24px,3.5vw,32px)] font-medium leading-[1.2] tracking-[-0.02em] text-[var(--gray-12)]"
                 style={{ textShadow: "none" }}
               >
                 {PRINCIPLES[active].title}
               </h3>
-              <p className="mt-5 text-[15px] leading-[1.7] text-[var(--gray-8)]">
+              <p className="mt-5 text-[15px] leading-[1.7] text-[var(--gray-8)] text-left">
                 {PRINCIPLES[active].description}
               </p>
             </div>

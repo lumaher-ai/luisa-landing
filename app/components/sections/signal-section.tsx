@@ -64,8 +64,8 @@ export function SignalSection() {
           David Dominguez
         </p>
 
-        <p className="mt-10 max-w-[400px] text-[14px] leading-[1.6] text-[var(--gray-8)]">
-          I help teams ship faster, build smarter, and scale with confidence. If you have a hard engineering problem or a bold product vision, my inbox is open.
+        <p className="mt-10 max-w-[650px] text-[14px] leading-[1.6] text-[var(--gray-8)]">
+          The teams I work with ship 2&ndash;3x faster within the first quarter &mdash; without adding headcount. I take one engagement at a time. My current slot closes Friday. If your next 90 days depend on serious engineering judgment &mdash; and the wrong hire costs you 6&ndash;12 months and $400K+ in fully-loaded costs &mdash; this is the conversation worth having right now.
         </p>
 
         <a

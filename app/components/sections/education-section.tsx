@@ -16,13 +16,13 @@ export function EducationSection() {
             <span className="mt-1 h-5 w-5 shrink-0 rounded-full bg-[var(--gray-3)]" />
             <div>
               <div className="font-medium text-[var(--gray-12)]">
-                Software Engineering & Computer Science
+                Computer Science & Software Engineering (B.S.)
               </div>
               <div className="mt-0.5 font-mono text-sm text-[var(--gray-6)]">
                 Jan 2018 — Dec 2022
               </div>
               <div className="mt-1 font-mono text-xs text-[var(--gray-8)]">
-                #1 Ranked University in Colombia · Top 10 in Latin America
+                QS World Ranked · #1 Colombia · Top 10 Latin America · Highly Selective · ABET Accreditation
               </div>
             </div>
           </div>

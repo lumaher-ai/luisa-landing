@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt: string = "David Dominguez — CTO, AI Engineer, and Founder-Ready Technical Leader";
+export const alt: string = "David Dominguez — CTO and AI Engineer who ships LLM systems that generate revenue and unblock growth";
 export const size: { width: number; height: number } = { width: 1200, height: 630 };
 export const contentType: string = "image/png";
 
@@ -51,7 +51,7 @@ export default function Image(): ImageResponse {
             letterSpacing: "-0.01em",
           }}
         >
-          CTO · AI Systems Architect · Product Builder
+          CTO · LLM Systems Architect · 0→1 AI Products · P&L Owner
         </p>
         <p
           style={{
@@ -63,7 +63,7 @@ export default function Image(): ImageResponse {
             lineHeight: 1.5,
           }}
         >
-          I turn AI ambition into shipped product.
+          I turn AI ambition into revenue.
         </p>
       </div>
     ),
