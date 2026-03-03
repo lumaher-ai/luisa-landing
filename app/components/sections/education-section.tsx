@@ -21,7 +21,7 @@ export function EducationSection() {
               <div className="mt-0.5 font-mono text-sm text-[var(--gray-6)]">
                 Jan 2018 — Dec 2022
               </div>
-              <div className="mt-1 font-mono text-xs text-[var(--gray-5)]">
+              <div className="mt-1 font-mono text-xs text-[var(--gray-8)]">
                 #1 Ranked University in Colombia · Top 10 in Latin America
               </div>
             </div>
