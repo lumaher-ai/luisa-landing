@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt: string = "David Dominguez — CTO and AI Engineer who ships LLM systems that generate revenue and unblock growth";
+export const alt: string = "David Dominguez \u2014 CTO and LLM engineer who cut inference costs 12x and scaled MercadoLibre\u2019s Affiliates to 800K+ users";
 export const size: { width: number; height: number } = { width: 1200, height: 630 };
 export const contentType: string = "image/png";
 
@@ -63,7 +63,7 @@ export default function Image(): ImageResponse {
             lineHeight: 1.5,
           }}
         >
-          12x inference cost reduction · 800K+ users scaled · 1M+ platform users
+          $0.25 → $0.02/conversation · 800K+ users scaled · 1% of MercadoLibre revenue
         </p>
       </div>
     ),

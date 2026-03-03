@@ -20,7 +20,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: "David Dominguez",
   description:
-    "CTO and LLM engineer who cut AI inference costs 12x at Closer AI and scaled a product to 800K+ users at MercadoLibre. I architect production AI systems \u2014 routing, agents, cost optimization \u2014 and ship them from founding stage through growth.",
+    "CTO and LLM engineer who reduced per-conversation AI costs from $0.25 to $0.02 at Closer AI and scaled MercadoLibre\u2019s Affiliates program to 800K+ users, contributing 1% of global company revenue. I architect production AI systems \u2014 routing, agents, cost optimization \u2014 and ship from founding stage through growth.",
   metadataBase: new URL("https://daviddominguez.dev"),
   alternates: {
     canonical: "/",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     type: "profile",
     title: "David Dominguez",
     description:
-      "CTO and LLM engineer. I\u2019ve shipped production AI systems from zero and led a 10-person team to 800K users at MercadoLibre. Currently building AI sales infrastructure at Closer AI.",
+      "CTO and LLM engineer. Built MercadoLibre\u2019s Affiliates program (800K+ users, 1% of global revenue) and cut AI inference costs 12x at Closer AI. I ship production AI systems from founding stage through growth.",
     url: "https://daviddominguez.dev",
     siteName: "David Dominguez",
     locale: "en_US",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "David Dominguez — CTO and AI Engineer who ships LLM systems that generate revenue and unblock growth",
+        alt: "David Dominguez \u2014 CTO and LLM engineer who cut inference costs 12x and scaled a product to 800K+ users at MercadoLibre",
       },
     ],
   },
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "David Dominguez",
     description:
-      "CTO and LLM engineer. I\u2019ve shipped production AI systems from zero and led a 10-person team to 800K users at MercadoLibre. Currently building AI sales infrastructure at Closer AI.",
+      "CTO and LLM engineer. Built MercadoLibre\u2019s Affiliates program (800K+ users, 1% of global revenue) and cut AI inference costs 12x at Closer AI. I ship production AI systems from founding stage through growth.",
     images: ["/opengraph-image"],
   },
 };

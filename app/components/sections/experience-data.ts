@@ -29,7 +29,7 @@ export const COMPANIES: Company[] = [
         title: "CTO",
         period: "Sept 2025 \u2014 Present",
         description:
-          "Most AI projects fail on cost before they scale. Architected and shipped an AI sales agent from zero, cutting inference costs 12x while sustaining sub-second response times. Built a routing layer across 20+ LLM providers that dynamically balances cost and quality per conversation turn.",
+          "Most AI projects fail on cost before they scale. Architected and shipped an AI sales agent from zero, reducing per-conversation cost from $0.25 to $0.02 (12x) while sustaining sub-second response times. Built a routing layer across 20+ LLM providers that dynamically balances cost and quality per conversation turn. Own hiring, technical budget, product roadmap, and report directly to investors.",
       },
     ],
   },
@@ -47,7 +47,7 @@ export const COMPANIES: Company[] = [
         title: "Technical Lead",
         period: "May 2024 \u2014 Sept 2025",
         description:
-          "Led a 10-person engineering team that built and scaled a new product within MercadoLibre\u2019s ecosystem from first user to 800K+, with zero SLA breaches across 16 months. Responsible for core architecture decisions, sprint delivery, and team growth.",
+          "Led a 10-person engineering team that built and scaled the Affiliates program within MercadoLibre\u2019s ecosystem from first user to 800K+, with zero SLA breaches across 16 months. The program grew to contribute 1% of MercadoLibre\u2019s global revenue. Responsible for core architecture decisions, sprint delivery, and team growth.",
       },
     ],
   },
@@ -56,16 +56,16 @@ export const COMPANIES: Company[] = [
     location: "Bogot\u00e1",
     accentColor: "rgb(200, 200, 220)",
     metrics: [
-      { value: "1M+", label: "Users" },
       { value: "~$0", label: "Infra Cost" },
       { value: "2", label: "Custom Engines" },
+      { value: "100%", label: "Client-Side" },
     ],
     roles: [
       {
         title: "CTO",
         period: "Aug 2022 \u2014 May 2024",
         description:
-          "As CTO, designed a fully client-side architecture for a low-code platform \u2014 keeping infrastructure costs near zero even at 1M+ users. Built two custom engines: a 2D rendering layer for the visual editor and a transpiler that converted user designs into production code.",
+          "As CTO, designed a fully client-side architecture for a low-code platform \u2014 keeping infrastructure costs near zero at scale. Built two custom engines: a 2D rendering layer for the visual editor and a transpiler that converted user designs into production code. Owned hiring, technical budget, product roadmap, and reported directly to investors.",
       },
     ],
   },

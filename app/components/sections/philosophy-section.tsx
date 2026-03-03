@@ -12,7 +12,7 @@ const PRINCIPLES: PhilosophyItem[] = [
   {
     title: "Privacy is a design constraint, not an afterthought.",
     description:
-      "I treat data privacy as an architectural decision, not a compliance checkbox. At Agua, that meant a fully client-side architecture with zero data egress. At Closer AI, it means strict data governance across every LLM provider interaction \u2014 controlling exactly what leaves the system, where it goes, and how it\u2019s retained. The approach changes with the problem. The discipline doesn\u2019t.",
+      "I treat data privacy as an architectural decision, not a compliance checkbox. At Agua, the fully client-side architecture meant zero data egress \u2014 both a product requirement and a privacy guarantee. At Closer AI, I face the inverse problem: third-party LLM calls are inherently data-leaving events. Privacy there means governing what leaves, where it goes, and how long it\u2019s retained. The approach changes with the problem. The discipline doesn\u2019t.",
   },
   {
     title: "Speed is a strategy. Waiting is a decision.",
