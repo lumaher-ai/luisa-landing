@@ -1,6 +1,7 @@
 import { COMPANIES } from "./experience-data";
 import type { Company, Role } from "./experience-data";
 import { MetricCards } from "./metric-cards";
+import { SectionRevealOverlay } from "./section-reveal-overlay";
 
 function RoleItem({ role }: { role: Role }) {
   return (
@@ -48,8 +49,9 @@ export function ExperienceSection() {
     <section
       id="experience"
       tabIndex={-1}
-      className="flex w-full flex-col items-center"
+      className="relative flex w-full flex-col items-center"
     >
+      <SectionRevealOverlay />
       <div className="mb-[25vh] w-full max-w-4xl px-10">
         <h2 className="mb-4 text-center text-[clamp(28px,4vw,42px)] font-medium leading-[1.1] tracking-[-0.03em] text-[var(--gray-12)]">
           Experience
