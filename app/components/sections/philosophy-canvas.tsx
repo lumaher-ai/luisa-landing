@@ -30,24 +30,6 @@ const NODES: Point[] = [
 // Node x positions as percentages of the 800-unit canvas
 const NODE_PERCENTS = NODES.map((n) => (n.x / 800) * 100);
 
-interface Dendrite {
-  a: number;
-  t: number;
-  dx: number;
-  dy: number;
-}
-
-const DENDRITES: Dendrite[] = [
-  { a: 0, t: 0.25, dx: -20, dy: -20 },
-  { a: 0, t: 0.5, dx: -12, dy: 22 },
-  { a: 0, t: 0.72, dx: 15, dy: 20 },
-  { a: 0, t: 0.82, dx: 20, dy: -15 },
-  { a: 1, t: 0.25, dx: -12, dy: 20 },
-  { a: 1, t: 0.42, dx: 14, dy: -22 },
-  { a: 1, t: 0.7, dx: 18, dy: -20 },
-  { a: 1, t: 0.85, dx: 12, dy: 14 },
-];
-
 const CURVE_STEPS = 200;
 
 function bezierPoint(
@@ -90,15 +72,8 @@ interface Pulse {
   burst: boolean;
 }
 
-interface Flash {
-  idx: number;
-  start: number;
-  dur: number;
-}
-
 interface CanvasState {
   pulses: Pulse[];
-  flashes: Flash[];
   burstP: number;
   burstSpd: number;
   burstAxons: number[];
@@ -110,7 +85,6 @@ interface CanvasState {
   w: number;
   h: number;
   dpr: number;
-  nextFlash: number;
   nodeFire: number[];
 }
 
@@ -219,7 +193,6 @@ export function PhilosophyCanvas({ active, onSelect }: Props) {
 
     const st: CanvasState = {
       pulses: [],
-      flashes: [],
       burstP: 0,
       burstSpd: 0,
       burstAxons: [],
@@ -231,20 +204,19 @@ export function PhilosophyCanvas({ active, onSelect }: Props) {
       w: 800,
       h: 95,
       dpr,
-      nextFlash: 1.2,
       nodeFire: [-999, -999, -999],
     };
     stateRef.current = st;
 
     // Seed initial pulses
     for (let ax = 0; ax < 2; ax++) {
-      for (let j = 0; j < 4; j++) {
+      for (let j = 0; j < 3; j++) {
         st.pulses.push({
           ax,
           pos: pseudoRandom(100 * ax + 31 * j + 11),
-          spd: 0.15 + 0.2 * pseudoRandom(50 * ax + 19 * j + 7),
-          width: 0.16 + 0.1 * pseudoRandom(30 * ax + 23 * j),
-          peak: 0.55 + 0.3 * pseudoRandom(70 * ax + 13 * j),
+          spd: 0.12 + 0.18 * pseudoRandom(50 * ax + 19 * j + 7),
+          width: 0.14 + 0.08 * pseudoRandom(30 * ax + 23 * j),
+          peak: 0.3 + 0.15 * pseudoRandom(70 * ax + 13 * j),
           burst: false,
         });
       }
@@ -287,18 +259,6 @@ export function PhilosophyCanvas({ active, onSelect }: Props) {
         if (st.burstP > 1) st.burstActive = false;
       }
 
-      // Flashes
-      st.nextFlash -= dt;
-      if (st.nextFlash <= 0) {
-        st.flashes.push({
-          idx: Math.floor(pseudoRandom(100 * st.time) * DENDRITES.length) % DENDRITES.length,
-          start: st.time,
-          dur: 0.12,
-        });
-        st.nextFlash = 0.4 + 1.2 * pseudoRandom(300 * st.time);
-      }
-      st.flashes = st.flashes.filter((f) => st.time - f.start < f.dur);
-
       if (!canvas) {
         rafRef.current = requestAnimationFrame(render);
         return;
@@ -322,12 +282,7 @@ export function PhilosophyCanvas({ active, onSelect }: Props) {
       for (let a = 0; a < 2; a++) {
         const axon = AXONS[a];
         const isAx = (a === 0 && st.active >= 1) || (a === 1 && st.active >= 2);
-        const baseAlpha = 0.25 + 0.06 * Math.sin(7 * g + 2.5 * a);
-        ctx.save();
-        if (isAx) {
-          ctx.shadowColor = "rgba(60,140,255,0.4)";
-          ctx.shadowBlur = 12;
-        }
+        const baseAlpha = 0.1 + 0.03 * Math.sin(7 * g + 2.5 * a);
         ctx.beginPath();
         ctx.moveTo(sx(axon.p0.x), sy(axon.p0.y));
         ctx.bezierCurveTo(
@@ -336,11 +291,10 @@ export function PhilosophyCanvas({ active, onSelect }: Props) {
           sx(axon.p1.x), sy(axon.p1.y)
         );
         ctx.strokeStyle = isAx
-          ? `rgba(70,150,255,${(baseAlpha + 0.35).toFixed(3)})`
-          : `rgba(255,255,255,${(baseAlpha).toFixed(3)})`;
-        ctx.lineWidth = isAx ? 2 : 1;
+          ? `rgba(25,80,180,${(baseAlpha + 0.18).toFixed(3)})`
+          : `rgba(255,255,255,${(baseAlpha + 0.02).toFixed(3)})`;
+        ctx.lineWidth = isAx ? 1.2 : 0.7;
         ctx.stroke();
-        ctx.restore();
       }
 
       // Draw pulses
@@ -354,27 +308,22 @@ export function PhilosophyCanvas({ active, onSelect }: Props) {
         if (hi <= 0 || lo >= 1) continue;
 
         const isAx = (p.ax === 0 && st.active >= 1) || (p.ax === 1 && st.active >= 2);
-        const strength = p.burst || isAx ? p.peak : 0.7 * p.peak;
+        const strength = p.burst || isAx ? p.peak : 0.45 * p.peak;
 
-        ctx.save();
-        ctx.shadowColor = "rgba(60,140,255,0.5)";
-        ctx.shadowBlur = 10;
-
-        ctx.globalAlpha = 0.5 * strength;
-        ctx.strokeStyle = "rgb(50,120,230)";
-        ctx.lineWidth = sw(p.burst ? 16 : 12);
+        ctx.globalAlpha = 0.22 * strength;
+        ctx.strokeStyle = "rgb(20,70,160)";
+        ctx.lineWidth = sw(p.burst ? 13 : 9);
         drawSegment(ctx, pts, Math.max(0, lo), Math.min(1, hi), sx, sy, 4);
 
-        ctx.globalAlpha = 0.8 * strength;
-        ctx.lineWidth = sw(p.burst ? 7 : 5);
+        ctx.globalAlpha = 0.45 * strength;
+        ctx.lineWidth = sw(p.burst ? 5.5 : 3.5);
         drawSegment(ctx, pts, Math.max(0, lo), Math.min(1, hi), sx, sy, 4);
 
-        ctx.globalAlpha = strength;
-        ctx.strokeStyle = p.burst ? "rgb(220,235,255)" : "rgb(120,180,255)";
-        ctx.lineWidth = sw(p.burst ? 3 : 2);
+        ctx.globalAlpha = strength * (p.burst ? 0.9 : 0.7);
+        ctx.strokeStyle = p.burst ? "rgb(205,225,255)" : "rgb(60,125,215)";
+        ctx.lineWidth = sw(p.burst ? 2.2 : 1.4);
         drawSegment(ctx, pts, Math.max(0, lo), Math.min(1, hi), sx, sy, 4);
 
-        ctx.restore();
         ctx.globalAlpha = 1;
       }
 
@@ -384,54 +333,18 @@ export function PhilosophyCanvas({ active, onSelect }: Props) {
           const pts = CURVES[ax];
           if (!pts) continue;
           const prog = st.burstRev ? 1 - st.burstP : st.burstP;
-          const lo = Math.max(0, prog - 0.18);
-          const hi = Math.min(1, prog + 0.18);
+          const lo = Math.max(0, prog - 0.12);
+          const hi = Math.min(1, prog + 0.12);
           ctx.save();
           ctx.lineCap = "round";
-          ctx.shadowColor = "rgba(80,160,255,1)";
-          ctx.shadowBlur = 40;
-          ctx.globalAlpha = 1;
-          ctx.strokeStyle = "rgb(230,240,255)";
-          ctx.lineWidth = sw(6);
+          ctx.shadowColor = "rgba(25,80,180,0.7)";
+          ctx.shadowBlur = 22;
+          ctx.globalAlpha = 0.95;
+          ctx.strokeStyle = "rgb(210,228,255)";
+          ctx.lineWidth = sw(4.5);
           drawSegment(ctx, pts, lo, hi, sx, sy, 2);
           ctx.restore();
         }
-      }
-
-      // Draw dendrites
-      for (let d = 0; d < DENDRITES.length; d++) {
-        const den = DENDRITES[d];
-        const isDenAct = (den.a === 0 && st.active >= 1) || (den.a === 1 && st.active >= 2);
-        const isFlashing = st.flashes.some((f) => f.idx === d);
-        const pt = CURVES[den.a][Math.round(CURVE_STEPS * den.t)];
-        const ex = pt.x + den.dx;
-        const ey = pt.y + den.dy;
-        const alpha = isFlashing ? 1 : isDenAct ? 0.4 : 0.2;
-
-        ctx.save();
-        if (isFlashing) {
-          ctx.shadowColor = "rgba(100,170,255,0.7)";
-          ctx.shadowBlur = 8;
-        }
-        ctx.beginPath();
-        ctx.moveTo(sx(pt.x), sy(pt.y));
-        ctx.quadraticCurveTo(
-          sx(pt.x + 0.5 * den.dx), sy(pt.y + 0.3 * den.dy),
-          sx(ex), sy(ey)
-        );
-        ctx.strokeStyle = isDenAct || isFlashing
-          ? `rgba(80,160,255,${alpha.toFixed(3)})`
-          : `rgba(255,255,255,${alpha.toFixed(3)})`;
-        ctx.lineWidth = isFlashing ? 2 : 1;
-        ctx.stroke();
-
-        ctx.beginPath();
-        ctx.arc(sx(ex), sy(ey), sw(2.2), 0, 2 * Math.PI);
-        ctx.fillStyle = isDenAct || isFlashing
-          ? `rgba(100,170,255,${(0.8 * alpha).toFixed(3)})`
-          : `rgba(255,255,255,${(0.6 * alpha).toFixed(3)})`;
-        ctx.fill();
-        ctx.restore();
       }
 
       // Draw nodes
@@ -444,46 +357,34 @@ export function PhilosophyCanvas({ active, onSelect }: Props) {
 
         if (isNodeActive) {
           ctx.save();
-          ctx.shadowColor = "rgba(80,160,255,0.6)";
-          ctx.shadowBlur = 50;
+          ctx.shadowColor = "rgba(25,80,180,0.18)";
+          ctx.shadowBlur = 35;
           ctx.beginPath();
-          ctx.arc(sx(node.x), sy(node.y), sw(20), 0, 2 * Math.PI);
-          ctx.fillStyle = "rgba(60,140,255,0.12)";
+          ctx.arc(sx(node.x), sy(node.y), sw(17), 0, 2 * Math.PI);
+          ctx.fillStyle = "rgba(20,70,160,0.05)";
           ctx.fill();
           ctx.restore();
         }
 
         ctx.beginPath();
         ctx.arc(sx(node.x), sy(node.y), sw(14), 0, 2 * Math.PI);
-        ctx.strokeStyle = isNodeActive
-          ? "rgba(100,175,255,0.45)"
-          : "rgba(255,255,255,0.2)";
-        ctx.lineWidth = isNodeActive ? 1.5 : 1;
+        ctx.strokeStyle = "rgba(255,255,255,0.1)";
+        ctx.lineWidth = 1;
         ctx.stroke();
 
         if (fireGlow > 0) {
-          ctx.save();
-          ctx.shadowColor = `rgba(100,180,255,${(0.8 * fireGlow).toFixed(3)})`;
-          ctx.shadowBlur = 35;
           ctx.beginPath();
-          ctx.arc(sx(node.x), sy(node.y), sw(14 + 10 * fireGlow), 0, 2 * Math.PI);
-          ctx.strokeStyle = `rgba(100,180,255,${(0.9 * fireGlow).toFixed(3)})`;
-          ctx.lineWidth = 2.5;
+          ctx.arc(sx(node.x), sy(node.y), sw(14 + 6 * fireGlow), 0, 2 * Math.PI);
+          ctx.strokeStyle = `rgba(30,90,190,${(0.6 * fireGlow).toFixed(3)})`;
+          ctx.lineWidth = 1.8;
           ctx.stroke();
-          ctx.restore();
         }
 
-        const dotRadius = isNodeActive ? 6 : 4;
-        ctx.save();
-        if (isNodeActive) {
-          ctx.shadowColor = "rgba(100,180,255,0.8)";
-          ctx.shadowBlur = 15;
-        }
+        const dotRadius = isNodeActive ? 4.5 : 3;
         ctx.beginPath();
         ctx.arc(sx(node.x), sy(node.y), sw(dotRadius), 0, 2 * Math.PI);
-        ctx.fillStyle = isNodeActive ? "rgb(120,190,255)" : "rgba(255,255,255,0.5)";
+        ctx.fillStyle = isNodeActive ? "rgb(55,120,210)" : "rgba(255,255,255,0.3)";
         ctx.fill();
-        ctx.restore();
       }
 
       ctx.restore();
