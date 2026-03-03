@@ -6,7 +6,7 @@ export function MouseIcon() {
       viewBox="0 0 24 36"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="text-white/70"
+      className="text-white/90"
     >
       <rect
         x="1"

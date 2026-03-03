@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { PhilosophyCanvas } from "./philosophy-canvas";
 
 interface PhilosophyItem {
@@ -26,12 +26,35 @@ const PRINCIPLES: PhilosophyItem[] = [
   },
 ];
 
+const CAROUSEL_INTERVAL = 10000;
+const STEP_COUNT = 3;
+
 export function PhilosophySection() {
   const [active, setActive] = useState(0);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const handleSelect = useCallback((i: number) => {
-    setActive(i);
+  const resetTimer = useCallback(() => {
+    if (timerRef.current) clearInterval(timerRef.current);
+    timerRef.current = setInterval(() => {
+      setActive((prev) => (prev + 1) % STEP_COUNT);
+    }, CAROUSEL_INTERVAL);
   }, []);
+
+  // Start auto-advance on mount
+  useEffect(() => {
+    resetTimer();
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [resetTimer]);
+
+  const handleSelect = useCallback(
+    (i: number) => {
+      setActive(i);
+      resetTimer();
+    },
+    [resetTimer]
+  );
 
   return (
     <section

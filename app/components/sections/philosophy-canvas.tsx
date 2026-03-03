@@ -420,11 +420,16 @@ export function PhilosophyCanvas({ active, onSelect }: Props) {
     };
   }, []); // mount only — active is synced via ref
 
-  // Sync active into canvas state without re-creating it
+  // Sync active into canvas state and fire burst animation on change
   useEffect(() => {
     const st = stateRef.current;
-    if (st) st.active = active;
-  }, [active]);
+    if (!st) return;
+    const prev = st.active;
+    if (prev !== active) {
+      fireBurst(prev, active);
+    }
+    st.active = active;
+  }, [active, fireBurst]);
 
   return (
     <div className="relative">

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { MetricCards } from "./metric-cards";
 import { SignalWave } from "./work-signal-wave";
 import type { Project } from "./work-data";
@@ -13,7 +13,28 @@ export function ProjectCard({
   index: number;
 }) {
   const titleRef = useRef<HTMLHeadingElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [inView, setInView] = useState(false);
   const number = String(index + 1).padStart(2, "0");
+
+  // Auto-hover when card scrolls into view
+  useEffect(() => {
+    const el = cardRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { threshold: 0.3 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // Apply accent color to title when in view
+  useEffect(() => {
+    if (titleRef.current) {
+      titleRef.current.style.color = inView ? project.accentColor : "";
+    }
+  }, [inView, project.accentColor]);
 
   const handleTitleEnter = useCallback(() => {
     if (titleRef.current) {
@@ -22,13 +43,13 @@ export function ProjectCard({
   }, [project.accentColor]);
 
   const handleTitleLeave = useCallback(() => {
-    if (titleRef.current) {
+    if (titleRef.current && !inView) {
       titleRef.current.style.color = "";
     }
-  }, []);
+  }, [inView]);
 
   return (
-    <div className="group relative">
+    <div ref={cardRef} className="group relative">
       {/* Large ghost number */}
       <span
         className="pointer-events-none absolute -right-4 top-0 hidden select-none text-[100px] font-medium leading-none text-[var(--gray-3)] md:block"
