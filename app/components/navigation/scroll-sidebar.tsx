@@ -184,12 +184,7 @@ export function ScrollSidebar() {
                   : tick.section !== undefined
                     ? "var(--gray-4)"
                     : "var(--gray-4)",
-              opacity:
-                tickWidths[i] > tick.w + 3
-                  ? 1
-                  : tick.section !== undefined
-                    ? 0.4
-                    : 0.2,
+              opacity: 1,
               transition:
                 "background-color 150ms cubic-bezier(0.2, 0.8, 0.2, 1)",
             }}
