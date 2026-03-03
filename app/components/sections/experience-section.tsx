@@ -22,9 +22,9 @@ function RoleItem({ role }: { role: Role }) {
   );
 }
 
-function CompanyBlock({ company }: { company: Company }) {
+function CompanyBlock({ company, className }: { company: Company, className: string }) {
   return (
-    <div className="my-16">
+    <div className={className}>
       <header className="mb-4 border-b border-[var(--gray-3)] py-2 text-xl font-medium tracking-tight text-[var(--gray-7)]">
         <span className="mr-1 text-[var(--gray-12)]">
           {company.name}
@@ -49,15 +49,15 @@ export function ExperienceSection() {
     <section
       id="experience"
       tabIndex={-1}
-      className="relative flex w-full flex-col items-center"
+      className="relative flex w-full flex-col items-center scroll-mt-20 py-32"
     >
       <SectionRevealOverlay />
-      <div className="mb-[25vh] w-full max-w-4xl px-10">
+      <div className="w-full max-w-4xl px-10">
         <h2 className="mb-4 text-center text-[clamp(28px,4vw,42px)] font-medium leading-[1.1] tracking-[-0.03em] text-[var(--gray-12)]">
           Experience
         </h2>
-        {COMPANIES.map((company) => (
-          <CompanyBlock key={company.name} company={company} />
+        {COMPANIES.map((company, i) => (
+          <CompanyBlock key={company.name} company={company} className={i === COMPANIES.length - 1 ? 'my-0' : 'my-16'} />
         ))}
       </div>
     </section>

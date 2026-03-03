@@ -13,7 +13,7 @@ const SOCIALS: SocialLink[] = [
 
 export function SignalSection() {
   return (
-    <section id="signal">
+    <section id="signal" className="scroll-mt-20 py-32">
       <div className="relative flex h-[60vh] items-center justify-center overflow-hidden md:h-[80vh]">
         {/* Top gradient fade */}
         <div
