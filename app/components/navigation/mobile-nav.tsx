@@ -5,10 +5,10 @@ import { createPortal } from "react-dom";
 
 const SECTIONS = [
   { id: "experience", label: "Experience" },
-  { id: "philosophy", label: "Philosophy" },
   { id: "work", label: "Work" },
-  { id: "stack", label: "Stack" },
   { id: "education", label: "Education" },
+  { id: "philosophy", label: "Philosophy" },
+  { id: "stack", label: "Stack" },
   { id: "signal", label: "Contact" },
 ];
 

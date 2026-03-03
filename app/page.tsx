@@ -25,13 +25,13 @@ export default function Home() {
       <div className="relative z-10 bg-[var(--gray-1)]">
         <ExperienceSection />
         <hr className="mx-auto max-w-4xl border-t border-[var(--gray-5)]" />
-        <PhilosophySection />
-        <hr className="mx-auto max-w-4xl border-t border-[var(--gray-5)]" />
         <WorkSection />
         <hr className="mx-auto max-w-4xl border-t border-[var(--gray-5)]" />
-        <StackSection />
-        <hr className="mx-auto max-w-4xl border-t border-[var(--gray-5)]" />
         <EducationSection />
+        <hr className="mx-auto max-w-4xl border-t border-[var(--gray-5)]" />
+        <PhilosophySection />
+        <hr className="mx-auto max-w-4xl border-t border-[var(--gray-5)]" />
+        <StackSection />
         <hr className="mx-auto max-w-4xl border-t border-[var(--gray-5)]" />
         <SignalSection />
         <Footer />
