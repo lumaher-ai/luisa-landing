@@ -1,6 +1,6 @@
 export function EducationSection() {
   return (
-    <section id="education" className="flex w-full flex-col items-center px-6 pb-24 md:px-8">
+    <section id="education" className="flex min-h-dvh w-full flex-col items-center px-6 pb-24 md:px-8">
       <div className="w-full max-w-4xl px-4">
         <h2 className="mb-4 text-center text-[clamp(28px,4vw,42px)] font-medium leading-[1.1] tracking-[-0.03em] text-[var(--gray-12)]">
           Education

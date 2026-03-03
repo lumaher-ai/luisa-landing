@@ -12,7 +12,8 @@ const SECTIONS: SectionDef[] = [
   { id: "philosophy", label: "Philosophy" },
   { id: "work", label: "Work" },
   { id: "stack", label: "Stack" },
-  { id: "signal", label: "Signal" },
+  { id: "education", label: "Education" },
+  { id: "signal", label: "Contact" },
 ];
 
 interface Tick {
@@ -58,6 +59,9 @@ function buildTicks(): Tick[] {
   ticks.push({ w: 30, section: 4 });
   filler();
 
+  ticks.push({ w: 30, section: 5 });
+  filler();
+
   ticks.push({ w: 6 });
   ticks.push({ w: 10 });
   ticks.push({ w: 6 });
@@ -66,30 +70,45 @@ function buildTicks(): Tick[] {
 }
 
 const TICKS = buildTicks();
-const TICK_SPACING = 10;
-const TOTAL_HEIGHT = (TICKS.length - 1) * TICK_SPACING;
-const SECTION_TICK_INDICES = TICKS.reduce<number[]>((acc, tick, i) => {
-  if (tick.section !== undefined) acc.push(i);
-  return acc;
-}, []);
+const TICK_COUNT = TICKS.length;
+const NAV_TOP = 56;
+const PADDING = 40;
+
+const DEFAULT_BAR_HEIGHT = 600;
 
 export function ScrollSidebar() {
+  const [barHeight, setBarHeight] = useState(DEFAULT_BAR_HEIGHT);
   const [visible, setVisible] = useState(false);
   const [activeSection, setActiveSection] = useState(0);
   const [tickWidths, setTickWidths] = useState(() => TICKS.map((t) => t.w));
   const [indicatorY, setIndicatorY] = useState(0);
   const [sectionBarPositions, setSectionBarPositions] = useState<number[]>(
-    () => SECTION_TICK_INDICES.map((ti) => ti * TICK_SPACING)
+    () => Array.from({ length: SECTIONS.length }, (_, i) => (i / Math.max(1, SECTIONS.length - 1)) * DEFAULT_BAR_HEIGHT)
   );
   const positionRef = useRef(0);
   const targetRef = useRef(0);
   const rafRef = useRef(0);
-  const lastLogRef = useRef(0);
+
+  const barHeightRef = useRef(DEFAULT_BAR_HEIGHT);
+
+  useEffect(() => {
+    const measure = () => {
+      const h = window.innerHeight - NAV_TOP - PADDING;
+      barHeightRef.current = h;
+      setBarHeight(h);
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, []);
+
+  const tickSpacing = barHeight / (TICK_COUNT - 1);
 
   const updateTickWidths = useCallback((pos: number) => {
+    const sp = barHeightRef.current / (TICK_COUNT - 1);
     setTickWidths(
       TICKS.map((tick, i) => {
-        const dist = Math.abs(pos - TICK_SPACING * i);
+        const dist = Math.abs(pos - sp * i);
         if (dist > 50) return tick.w;
         const proximity = (1 - Math.cos((1 - dist / 50) * Math.PI)) / 2;
         return tick.w + 22 * proximity;
@@ -100,7 +119,7 @@ export function ScrollSidebar() {
   useEffect(() => {
     function animate() {
       const diff = targetRef.current - positionRef.current;
-      positionRef.current += diff * 0.1;
+      positionRef.current += diff * 0.2;
       setIndicatorY(positionRef.current);
       updateTickWidths(positionRef.current);
       rafRef.current = requestAnimationFrame(animate);
@@ -144,15 +163,17 @@ export function ScrollSidebar() {
     const contentStart = sectionTops[0];
     const contentEnd = sectionBottoms[sectionBottoms.length - 1];
     const contentRange = contentEnd - contentStart;
-    const margin = TOTAL_HEIGHT * 0.06;
-    const barRange = TOTAL_HEIGHT - 2 * margin;
+    const h = barHeightRef.current;
+    const margin = h * 0.06;
+    const barRange = h - 2 * margin;
+
+    const barPositionsComputed = sectionTops.map((top) => {
+      const t = contentRange > 0 ? (top - contentStart) / contentRange : 0;
+      return margin + t * barRange;
+    });
 
     if (contentRange > 0) {
-      const newPositions = sectionTops.map((top) => {
-        const t = (top - contentStart) / contentRange;
-        return margin + t * barRange;
-      });
-      setSectionBarPositions(newPositions);
+      setSectionBarPositions(barPositionsComputed);
     }
 
     // Active section = last section whose top has passed the viewport center
@@ -165,11 +186,17 @@ export function ScrollSidebar() {
     }
     setActiveSection(current);
 
-    // Indicator: same proportional mapping as section labels
+    // Indicator: same proportional mapping, clamped to first/last label positions
+    let indicatorTarget = 0;
     if (contentRange > 0) {
       const t = (viewCenter - contentStart) / contentRange;
-      targetRef.current = margin + Math.min(1, Math.max(0, t)) * barRange;
+      const raw = margin + t * barRange;
+      const firstBar = barPositionsComputed[0];
+      const lastBar = barPositionsComputed[barPositionsComputed.length - 1];
+      indicatorTarget = Math.min(lastBar, Math.max(firstBar, raw));
+      targetRef.current = indicatorTarget;
     }
+
   }, []);
 
   useEffect(() => {
@@ -183,6 +210,7 @@ export function ScrollSidebar() {
   };
 
   return (
+    <>
     <div
       aria-hidden={visible ? undefined : true}
       className="fixed left-6 z-30 hidden items-center lg:flex"
@@ -195,33 +223,36 @@ export function ScrollSidebar() {
         pointerEvents: visible ? "auto" : "none",
       }}
     >
-      <div className="relative" style={{ height: TOTAL_HEIGHT, width: 70 }}>
-        {/* Vertical line */}
+      <div className="relative" style={{ height: barHeight, width: 70 }}>
+        {/* Vertical line — only extends to last section */}
         <div
           className="absolute left-0 top-0 w-px bg-[var(--gray-3)]"
-          style={{ height: TOTAL_HEIGHT }}
+          style={{ height: sectionBarPositions[sectionBarPositions.length - 1] || barHeight }}
         />
 
-        {/* Tick marks */}
-        {TICKS.map((tick, i) => (
-          <div
-            key={i}
-            className="absolute left-0 h-px"
-            style={{
-              top: TICK_SPACING * i,
-              width: tickWidths[i],
-              backgroundColor:
-                tickWidths[i] > tick.w + 3
-                  ? "#FF4D00"
-                  : tick.section !== undefined
-                    ? "var(--gray-6)"
+        {/* Tick marks (decorative) — only render up to last section */}
+        {TICKS.map((tick, i) => {
+          const top = tickSpacing * i;
+          const lastPos = sectionBarPositions[sectionBarPositions.length - 1] || barHeight;
+          if (top > lastPos) return null;
+          return (
+            <div
+              key={i}
+              className="absolute left-0 h-px"
+              style={{
+                top,
+                width: tickWidths[i],
+                backgroundColor:
+                  tickWidths[i] > tick.w + 3
+                    ? "#FF4D00"
                     : "var(--gray-5)",
-              opacity: 1,
-              transition:
-                "background-color 150ms cubic-bezier(0.2, 0.8, 0.2, 1)",
-            }}
-          />
-        ))}
+                opacity: 1,
+                transition:
+                  "background-color 150ms cubic-bezier(0.2, 0.8, 0.2, 1)",
+              }}
+            />
+          );
+        })}
 
         {/* Position indicator */}
         <div
@@ -243,52 +274,35 @@ export function ScrollSidebar() {
           >
             <path d="M8 5L0 0V10L8 5Z" fill="#FF4D00" />
           </svg>
-
-          {/* Horizontal orange line */}
-          <div
-            className="absolute h-px"
-            style={{
-              top: 0,
-              left: 0,
-              width: "calc(100vw - 24px)",
-              backgroundColor: "#FF4D00",
-              opacity: 0.4,
-            }}
-          />
-
-          {/* LET'S TALK button */}
-          <button
-            onClick={() => scrollToSection("signal")}
-            aria-label="Scroll to contact section"
-            className="group absolute cursor-pointer"
-            style={{
-              left: "calc(100vw - 24px)",
-              top: 0,
-              transform: "translateX(-100%)",
-            }}
-          >
-            <div
-              className="font-mono text-[13px] font-semibold tracking-[0.16em] uppercase px-5 py-3 transition-transform duration-200 group-hover:scale-105 group-active:scale-95"
-              style={{
-                backgroundColor: "#FF4D00",
-                color: "#fff",
-                whiteSpace: "nowrap",
-              }}
-            >
-              Let&apos;s talk
-            </div>
-          </button>
         </div>
+
+        {/* Clickable section zones — non-overlapping regions */}
+        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
+        <div
+          className="absolute left-0 w-full cursor-pointer"
+          style={{ top: 0, height: barHeight }}
+          onClick={(e) => {
+            const y = e.nativeEvent.offsetY;
+            let closest = 0;
+            let minDist = Math.abs(y - sectionBarPositions[0]);
+            for (let i = 1; i < SECTIONS.length; i++) {
+              const dist = Math.abs(y - sectionBarPositions[i]);
+              if (dist < minDist) {
+                minDist = dist;
+                closest = i;
+              }
+            }
+            scrollToSection(SECTIONS[closest].id);
+          }}
+        />
 
         {/* Section labels — positioned proportionally to actual page layout */}
         {SECTIONS.map((sec, sectionIdx) => {
           const isActive = activeSection === sectionIdx;
           return (
-            <button
+            <div
               key={sectionIdx}
-              aria-label={`Scroll to ${sec.label} section`}
-              onClick={() => scrollToSection(sec.id)}
-              className="absolute left-0 cursor-pointer"
+              className="absolute left-0 pointer-events-none"
               style={{
                 top: sectionBarPositions[sectionIdx] - 14,
                 height: 28,
@@ -310,10 +324,34 @@ export function ScrollSidebar() {
               >
                 {sec.label}
               </span>
-            </button>
+            </div>
           );
         })}
       </div>
     </div>
+
+    {/* LET'S TALK button — fixed bottom right */}
+    <button
+      onClick={() => scrollToSection("signal")}
+      aria-label="Scroll to contact section"
+      className="group fixed bottom-0 right-0 z-30 hidden cursor-pointer lg:block"
+      style={{
+        opacity: visible ? 1 : 0,
+        transition: "opacity 0.5s ease",
+        pointerEvents: visible ? "auto" : "none",
+      }}
+    >
+      <div
+        className="font-mono text-[13px] font-semibold tracking-[0.16em] uppercase px-5 py-3 transition-transform duration-200 group-hover:scale-105 group-active:scale-95"
+        style={{
+          backgroundColor: "#FF4D00",
+          color: "#fff",
+          whiteSpace: "nowrap",
+        }}
+      >
+        Let&apos;s talk
+      </div>
+    </button>
+    </>
   );
 }
