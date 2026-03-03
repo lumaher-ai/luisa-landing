@@ -10,19 +10,19 @@ interface PhilosophyItem {
 
 const PRINCIPLES: PhilosophyItem[] = [
   {
-    title: "Privacy is architecture, not a setting.",
+    title: "Privacy is a design constraint, not an afterthought.",
     description:
-      "Every tool I build runs entirely on your machine. No server calls, no third-party models, no data egress \u2014 ever. That\u2019s not a privacy policy, it\u2019s an architectural guarantee. When your legal team asks, the answer is already built in. When a breach happens to your competitor, it\u2019s a non-event for you.",
+      "I treat data privacy as an architectural decision, not a compliance checkbox. At Agua, that meant a fully client-side architecture with zero data egress. At Closer AI, it means strict data governance across every LLM provider interaction \u2014 controlling exactly what leaves the system, where it goes, and how it\u2019s retained. The approach changes with the problem. The discipline doesn\u2019t.",
   },
   {
     title: "Speed is a strategy. Waiting is a decision.",
     description:
-      "Every week a tool isn\u2019t in production is a week your team is working around the problem instead of past it. I optimize for time-to-value \u2014 scoped releases, real users, real feedback \u2014 because the compounding cost of delay is invisible until it isn\u2019t. Momentum is not a soft metric. It is the difference between a capability your organization has and one it\u2019s still planning.",
+      "Every week a tool isn\u2019t in production is a week your team is working around the problem instead of past it. I optimize for sustainable velocity \u2014 scoped releases, real users, real feedback \u2014 without sacrificing reliability. The compounding cost of delay is invisible until it isn\u2019t. But so is the cost of shipping something that breaks trust.",
   },
   {
     title: "Adoption is an engineering problem.",
     description:
-      "A tool that requires training has already failed. I build for zero-friction adoption \u2014 fitting existing workflows, existing habits, existing mental models \u2014 because the hidden cost of software is never the license. It\u2019s the change management, the resistance, the workarounds your team builds around tools they were told to use.",
+      "The hardest tools to adopt are the ones that ignore how people already work. I build to fit existing workflows, existing habits, existing mental models \u2014 because the hidden cost of software is never the license. It\u2019s the change management, the resistance, the workarounds your team builds around tools they were told to use.",
   },
 ];
 

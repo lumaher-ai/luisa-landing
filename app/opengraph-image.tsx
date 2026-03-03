@@ -51,7 +51,7 @@ export default function Image(): ImageResponse {
             letterSpacing: "-0.01em",
           }}
         >
-          CTO · LLM Systems Architect · 0→1 AI Products · P&L Owner
+          CTO · LLM Engineer · 0→1 AI Products
         </p>
         <p
           style={{
@@ -63,7 +63,7 @@ export default function Image(): ImageResponse {
             lineHeight: 1.5,
           }}
         >
-          I turn AI ambition into revenue.
+          12x inference cost reduction · 800K+ users scaled · 1M+ platform users
         </p>
       </div>
     ),

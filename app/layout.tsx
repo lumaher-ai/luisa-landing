@@ -20,7 +20,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: "David Dominguez",
   description:
-    "CTO and AI Engineer who has scaled products to 1M+ users at near-zero cost and cut AI inference spend by 12x. Rare combination of production LLM architecture, agentic systems, and founding-team judgment — the technical hire that unblocks growth and protects margins.",
+    "CTO and LLM engineer who cut AI inference costs 12x at Closer AI and scaled a product to 800K+ users at MercadoLibre. I architect production AI systems \u2014 routing, agents, cost optimization \u2014 and ship them from founding stage through growth.",
   metadataBase: new URL("https://daviddominguez.dev"),
   alternates: {
     canonical: "/",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     type: "profile",
     title: "David Dominguez",
     description:
-      "I turn ambiguous AI bets into revenue-generating products. If your AI initiative is months behind and millions at stake, I\u2019m the call you make.",
+      "CTO and LLM engineer. I\u2019ve shipped production AI systems from zero and led a 10-person team to 800K users at MercadoLibre. Currently building AI sales infrastructure at Closer AI.",
     url: "https://daviddominguez.dev",
     siteName: "David Dominguez",
     locale: "en_US",
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "David Dominguez",
     description:
-      "I turn ambiguous AI bets into revenue-generating products. If your AI initiative is months behind and millions at stake, I\u2019m the call you make.",
+      "CTO and LLM engineer. I\u2019ve shipped production AI systems from zero and led a 10-person team to 800K users at MercadoLibre. Currently building AI sales infrastructure at Closer AI.",
     images: ["/opengraph-image"],
   },
 };
@@ -73,7 +73,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               name: "David Dominguez",
-              jobTitle: "Chief Technology Officer & AI Systems Architect",
+              jobTitle: "Chief Technology Officer",
               url: "https://daviddominguez.dev",
               sameAs: [
                 "https://github.com/daviddominguezh/",

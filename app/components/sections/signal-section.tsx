@@ -65,7 +65,7 @@ export function SignalSection() {
         </p>
 
         <p className="mt-10 max-w-[650px] text-[14px] leading-[1.6] text-[var(--gray-8)]">
-          The teams I work with ship 2&ndash;3x faster within the first quarter &mdash; without adding headcount. I take one engagement at a time. My current slot closes Friday. If your next 90 days depend on serious engineering judgment &mdash; and the wrong hire costs you 6&ndash;12 months and $400K+ in fully-loaded costs &mdash; this is the conversation worth having right now.
+          I take one engagement at a time and work with teams where engineering decisions directly impact business outcomes. If your next 90 days depend on serious engineering judgment, this is a conversation worth having.
         </p>
 
         <a

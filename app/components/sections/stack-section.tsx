@@ -10,21 +10,21 @@ interface StackItem {
 }
 
 const STACK_ITEMS: StackItem[] = [
-  { name: "TypeScript", level: "primary", subtitle: "ships 10x, breaks never", years: 7 },
-  { name: "React", level: "primary", subtitle: "revenue UI, zero lag", years: 7 },
-  { name: "Node.js", level: "primary", subtitle: "millions served, costs slashed", years: 7 },
-  { name: "Jest", level: "tertiary", subtitle: "zero regressions, fast deploys", years: 7 },
-  { name: "CI/CD", level: "tertiary", subtitle: "hours to minutes, daily", years: 7 },
+  { name: "TypeScript", level: "primary", subtitle: "primary language, 7 years deep", years: 7 },
+  { name: "React", level: "primary", subtitle: "complex UIs, production-grade", years: 7 },
+  { name: "Node.js", level: "primary", subtitle: "APIs at scale, low overhead", years: 7 },
+  { name: "Jest", level: "tertiary", subtitle: "full coverage, fast feedback", years: 7 },
+  { name: "CI/CD", level: "tertiary", subtitle: "automated pipelines, daily deploys", years: 7 },
   { name: "MongoDB", level: "secondary", subtitle: "pivot schema, not timelines", years: 5 },
-  { name: "Docker", level: "primary", subtitle: "infra cost cut in half", years: 4 },
-  { name: "AWS", level: "secondary", subtitle: "99.99% up, auto-scaled", years: 4 },
-  { name: "GCP", level: "secondary", subtitle: "trains models, serves billions", years: 4 },
+  { name: "Docker", level: "primary", subtitle: "containerized everything", years: 4 },
+  { name: "AWS", level: "secondary", subtitle: "production infra, auto-scaled", years: 4 },
+  { name: "GCP", level: "secondary", subtitle: "ML pipelines, Vertex AI", years: 4 },
   { name: "MySQL", level: "secondary", subtitle: "ACID at any volume", years: 4 },
   { name: "Python", level: "primary", subtitle: "AI pipelines, weeks faster", years: 3 },
-  { name: "AI Agents", level: "primary", subtitle: "replaces entire team workflows", years: 3 },
+  { name: "AI Agents", level: "primary", subtitle: "autonomous task execution", years: 3 },
   { name: "Kubernetes", level: "secondary", subtitle: "zero-downtime, auto-heals", years: 3 },
-  { name: "React Native", level: "secondary", subtitle: "half the team, full product", years: 3 },
-  { name: "Java", level: "secondary", subtitle: "handles the load, always", years: 3 },
+  { name: "React Native", level: "secondary", subtitle: "iOS + Android, one codebase", years: 3 },
+  { name: "Java", level: "secondary", subtitle: "high-throughput backends", years: 3 },
   { name: "LLM Routing", level: "primary", subtitle: "right model, right cost", years: 2 },
 ];
 

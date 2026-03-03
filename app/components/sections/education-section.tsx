@@ -22,7 +22,7 @@ export function EducationSection() {
                 Jan 2018 — Dec 2022
               </div>
               <div className="mt-1 font-mono text-xs text-[var(--gray-8)]">
-                QS World Ranked · #1 Colombia · Top 10 Latin America · Highly Selective · ABET Accreditation
+                QS Top 200 Worldwide · #1 in Colombia · Top 10 Latin America · ABET Accredited
               </div>
             </div>
           </div>
