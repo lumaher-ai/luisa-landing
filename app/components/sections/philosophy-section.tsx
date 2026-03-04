@@ -10,9 +10,9 @@ interface PhilosophyItem {
 
 const PRINCIPLES: PhilosophyItem[] = [
   {
-    title: "Privacy is a design constraint, not an afterthought.",
+    title: "Adoption is an engineering problem.",
     description:
-      "I treat data privacy as an architectural decision, not a compliance checkbox. At Agua, the fully client-side architecture meant zero data egress \u2014 both a product requirement and a privacy guarantee. At Closer AI, I face the inverse problem: third-party LLM calls are inherently data-leaving events. Privacy there means governing what leaves, where it goes, and how long it\u2019s retained. The approach changes with the problem. The discipline doesn\u2019t.",
+      "The hardest tools to adopt are the ones that ignore how people already work. I build to fit existing workflows, existing habits, existing mental models \u2014 because the hidden cost of software is never the license. It\u2019s the change management, the resistance, the workarounds your team builds around tools they were told to use.",
   },
   {
     title: "Speed is a strategy. Waiting is a decision.",
@@ -20,9 +20,9 @@ const PRINCIPLES: PhilosophyItem[] = [
       "Every week a tool isn\u2019t in production is a week your team is working around the problem instead of past it. I optimize for sustainable velocity \u2014 scoped releases, real users, real feedback \u2014 without sacrificing reliability. The compounding cost of delay is invisible until it isn\u2019t. But so is the cost of shipping something that breaks trust.",
   },
   {
-    title: "Adoption is an engineering problem.",
+    title: "Privacy is a design constraint, not an afterthought.",
     description:
-      "The hardest tools to adopt are the ones that ignore how people already work. I build to fit existing workflows, existing habits, existing mental models \u2014 because the hidden cost of software is never the license. It\u2019s the change management, the resistance, the workarounds your team builds around tools they were told to use.",
+      "I treat data privacy as an architectural decision, not a compliance checkbox. At Agua, the fully client-side architecture meant zero data egress \u2014 both a product requirement and a privacy guarantee. At Closer AI, I face the inverse problem: third-party LLM calls are inherently data-leaving events. Privacy there means governing what leaves, where it goes, and how long it\u2019s retained. The approach changes with the problem. The discipline doesn\u2019t.",
   },
 ];
 
