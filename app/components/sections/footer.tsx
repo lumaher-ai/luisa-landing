@@ -6,7 +6,7 @@ export function Footer() {
           {new Date().getFullYear()}
         </span>
         <span className="text-[12px] text-[var(--gray-6)]">
-          David Dominguez
+          Luisa Hernandez
         </span>
       </div>
     </footer>

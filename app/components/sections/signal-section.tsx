@@ -7,8 +7,8 @@ interface SocialLink {
 }
 
 const SOCIALS: SocialLink[] = [
-  { label: "GitHub", href: "https://github.com/daviddominguezh/" },
-  { label: "LinkedIn", href: "https://linkedin.com/in/daviddominguez" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/lmhm0928" },
+  { label: "Download CV", href: "/cv-luisa_hernandez.pdf" },
 ];
 
 export function SignalSection() {
@@ -45,8 +45,8 @@ export function SignalSection() {
             style={{ opacity: 0.65 }}
           >
             <Image
-              src="/david.png"
-              alt="David Dominguez"
+              src="/luisa.png"
+              alt="Luisa Hernández"
               width={840}
               height={840}
               className="h-full w-full object-cover"
@@ -61,18 +61,18 @@ export function SignalSection() {
           Contact
         </h2>
         <p className="text-[17px] font-medium tracking-tight text-[var(--gray-9)]">
-          David Dominguez
+          Luisa Hernández
         </p>
 
         <p className="mt-10 max-w-[650px] text-[14px] leading-[1.6] text-[var(--gray-8)]">
-          I take one engagement at a time and work with teams where engineering decisions directly impact business outcomes. If your next 90 days depend on serious engineering judgment, this is a conversation worth having.
+        I bridge the gap between complex AI orchestration (LangGraph, RAG) and production infrastructure (Python, AWS) to deliver autonomous systems that move metrics.
         </p>
 
         <a
-          href="mailto:l.david.dominguez.12@gmail.com"
+          href="mailto:lmhm0928@gmail.com"
           className="mt-6 block font-mono text-[clamp(14px,2vw,20px)] font-medium tracking-[-0.01em] text-[var(--gray-12)] transition-colors duration-200 hover:text-[var(--gray-10)]"
         >
-          l.david.dominguez.12@gmail.com
+          lmhm0928@gmail.com
         </a>
 
         <div className="mt-6 flex items-center justify-center gap-6">

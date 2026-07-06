@@ -10,22 +10,22 @@ interface StackItem {
 }
 
 const STACK_ITEMS: StackItem[] = [
-  { name: "TypeScript", level: "primary", subtitle: "primary language, 7 years deep", years: 7 },
-  { name: "React", level: "primary", subtitle: "complex UIs, production-grade", years: 7 },
-  { name: "Node.js", level: "primary", subtitle: "APIs at scale, low overhead", years: 7 },
-  { name: "Jest", level: "tertiary", subtitle: "full coverage, fast feedback", years: 7 },
-  { name: "CI/CD", level: "tertiary", subtitle: "automated pipelines, daily deploys", years: 7 },
-  { name: "MongoDB", level: "secondary", subtitle: "flexible data models, aggregation", years: 5 },
-  { name: "Docker", level: "primary", subtitle: "containerized everything", years: 4 },
-  { name: "AWS", level: "secondary", subtitle: "production infra, auto-scaled", years: 4 },
-  { name: "GCP", level: "secondary", subtitle: "ML pipelines, Vertex AI", years: 4 },
-  { name: "MySQL", level: "secondary", subtitle: "relational data, query optimization", years: 4 },
-  { name: "Python", level: "primary", subtitle: "AI/ML pipelines, data processing", years: 3 },
-  { name: "AI Agents", level: "primary", subtitle: "autonomous task execution", years: 3 },
-  { name: "Kubernetes", level: "secondary", subtitle: "zero-downtime, auto-heals", years: 3 },
-  { name: "React Native", level: "secondary", subtitle: "iOS + Android, one codebase", years: 3 },
-  { name: "Java", level: "secondary", subtitle: "high-throughput backends", years: 3 },
-  { name: "LLM Routing", level: "primary", subtitle: "right model, right cost", years: 2 },
+  { name: "Python", level: "primary", subtitle: "agents, RAG, data pipelines", years: 4 },
+  { name: "Node.js", level: "primary", subtitle: "multi-tenant backends at scale", years: 4 },
+  { name: "TypeScript", level: "primary", subtitle: "typed end-to-end, production-grade", years: 4 },
+  { name: "CI/CD", level: "tertiary", subtitle: "zero-downtime, automated pipelines", years: 4 },
+  { name: "AWS", level: "primary", subtitle: "ECS, S3, Lambda, RDS, Bedrock", years: 3 },
+  { name: "PostgreSQL", level: "secondary", subtitle: "relational data + pgvector", years: 3 },
+  { name: "Docker", level: "secondary", subtitle: "containerized everything", years: 3 },
+  { name: "React", level: "secondary", subtitle: "enterprise UIs, shared libraries", years: 3 },
+  { name: "Jest / Vitest", level: "tertiary", subtitle: "45% → 80% coverage", years: 3 },
+  { name: "LLM Integration", level: "primary", subtitle: "OpenAI, Anthropic, in production", years: 2 },
+  { name: "Prompt Engineering", level: "primary", subtitle: "grounded, reliable output", years: 2 },
+  { name: "LangGraph", level: "primary", subtitle: "autonomous multi-agent flows", years: 1 },
+  { name: "LangChain", level: "primary", subtitle: "agentic orchestration", years: 1 },
+  { name: "RAG Pipelines", level: "primary", subtitle: "hallucination-free grounding", years: 1 },
+  { name: "Vector DBs", level: "secondary", subtitle: "Pinecone, pgvector", years: 1 },
+  { name: "MCP", level: "secondary", subtitle: "Model Context Protocol", years: 1 },
 ];
 
 const SORTED_ITEMS = [...STACK_ITEMS].sort((a, b) => b.years - a.years);

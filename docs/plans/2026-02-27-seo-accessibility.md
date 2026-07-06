@@ -21,38 +21,38 @@ Open `app/layout.tsx`. Replace the existing `metadata` export entirely:
 
 ```tsx
 export const metadata: Metadata = {
-  title: "David Dominguez",
+  title: "Luisa Hernandez",
   description:
     "CTO and AI Engineer building privacy-first intelligence tools. TypeScript, React, LLM routing, and agentic systems.",
   metadataBase: new URL("https://daviddominguez.dev"),
   alternates: {
     canonical: "/",
   },
-  authors: [{ name: "David Dominguez", url: "https://daviddominguez.dev" }],
+  authors: [{ name: "Luisa Hernandez", url: "https://daviddominguez.dev" }],
   robots: {
     index: true,
     follow: true,
   },
   openGraph: {
     type: "profile",
-    title: "David Dominguez",
+    title: "Luisa Hernandez",
     description:
       "CTO and AI Engineer building privacy-first intelligence tools.",
     url: "https://daviddominguez.dev",
-    siteName: "David Dominguez",
+    siteName: "Luisa Hernandez",
     locale: "en_US",
     images: [
       {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "David Dominguez — CTO / AI Engineer / Builder",
+        alt: "Luisa Hernandez — CTO / AI Engineer / Builder",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "David Dominguez",
+    title: "Luisa Hernandez",
     description:
       "CTO and AI Engineer building privacy-first intelligence tools.",
     images: ["/opengraph-image"],
@@ -72,7 +72,7 @@ Inside `RootLayout`, add a `<script>` tag as the first child of `<body>`:
       __html: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "Person",
-        name: "David Dominguez",
+        name: "Luisa Hernandez",
         jobTitle: "CTO / AI Engineer",
         url: "https://daviddominguez.dev",
         sameAs: [
@@ -124,7 +124,7 @@ git commit -m "feat(seo): add rich metadata, OG tags, Twitter card, and JSON-LD 
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "David Dominguez — CTO / AI Engineer / Builder";
+export const alt = "Luisa Hernandez — CTO / AI Engineer / Builder";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -164,7 +164,7 @@ export default function Image() {
             letterSpacing: "-0.03em",
           }}
         >
-          David Dominguez
+          Luisa Hernandez
         </h1>
         <p
           style={{

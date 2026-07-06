@@ -19,7 +19,7 @@ Replace sparse `metadata` export with a full Next.js `Metadata` object:
 - `alternates.canonical` → `https://daviddominguez.dev`
 - `openGraph` → type `"profile"`, title, description, url, siteName, locale `en_US`, image pointing to OG image route
 - `twitter` → `"summary_large_image"` card, title, description, image
-- `authors` → `[{ name: "David Dominguez", url: "https://daviddominguez.dev" }]`
+- `authors` → `[{ name: "Luisa Hernandez", url: "https://daviddominguez.dev" }]`
 - `robots` → `{ index: true, follow: true }`
 - Inject JSON-LD `<script type="application/ld+json">` with `Person` schema:
   - name, jobTitle (`"CTO / AI Engineer"`), url, sameAs (GitHub + LinkedIn), knowsAbout list

@@ -18,40 +18,40 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "David Dominguez",
+  title: "Luisa Hern\u00e1ndez \u2014 Senior AI Engineer",
   description:
-    "CTO and LLM engineer who reduced per-conversation AI costs from $0.25 to $0.02 at Closer AI and scaled MercadoLibre\u2019s Affiliates program to 800K+ users, contributing 1% of global company revenue. I architect production AI systems \u2014 routing, agents, cost optimization \u2014 and ship from founding stage through growth.",
-  metadataBase: new URL("https://daviddominguez.dev"),
+    "Senior AI & Backend Engineer who ships production GenAI from 0 to 1. Built autonomous LangGraph agents that handle 10k+ daily WhatsApp conversations and resolve 60% of inquiries at Closer, taking the company to $25K MRR. Expert in Python, Node.js, RAG pipelines, and multi-agent LLM systems on AWS.",
+  metadataBase: new URL("https://luisahernandez.dev"),
   alternates: {
     canonical: "/",
   },
-  authors: [{ name: "David Dominguez", url: "https://daviddominguez.dev" }],
+  authors: [{ name: "Luisa Hern\u00e1ndez", url: "https://luisahernandez.dev" }],
   robots: {
     index: true,
     follow: true,
   },
   openGraph: {
     type: "profile",
-    title: "David Dominguez",
+    title: "Luisa Hern\u00e1ndez \u2014 Senior AI Engineer",
     description:
-      "CTO and LLM engineer. Built MercadoLibre\u2019s Affiliates program (800K+ users, 1% of global revenue) and cut AI inference costs 12x at Closer AI. I ship production AI systems from founding stage through growth.",
-    url: "https://daviddominguez.dev",
-    siteName: "David Dominguez",
+      "Senior AI Engineer shipping production GenAI from 0 to 1. Autonomous LangGraph agents handling 10k+ daily conversations, 60% resolved without a human, $25K MRR from zero. Python \u00b7 Node.js \u00b7 RAG \u00b7 multi-agent LLM systems on AWS.",
+    url: "https://luisahernandez.dev",
+    siteName: "Luisa Hern\u00e1ndez",
     locale: "en_US",
     images: [
       {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "David Dominguez \u2014 CTO and LLM engineer who cut inference costs 12x and scaled a product to 800K+ users at MercadoLibre",
+        alt: "Luisa Hern\u00e1ndez \u2014 Senior AI Engineer shipping production GenAI agents that handle 10k+ conversations a day",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "David Dominguez",
+    title: "Luisa Hern\u00e1ndez \u2014 Senior AI Engineer",
     description:
-      "CTO and LLM engineer. Built MercadoLibre\u2019s Affiliates program (800K+ users, 1% of global revenue) and cut AI inference costs 12x at Closer AI. I ship production AI systems from founding stage through growth.",
+      "Senior AI Engineer shipping production GenAI from 0 to 1. Autonomous LangGraph agents handling 10k+ daily conversations, 60% resolved without a human, $25K MRR from zero. Python \u00b7 Node.js \u00b7 RAG \u00b7 multi-agent LLM systems on AWS.",
     images: ["/opengraph-image"],
   },
 };
@@ -72,22 +72,31 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Person",
-              name: "David Dominguez",
-              jobTitle: "Chief Technology Officer",
-              url: "https://daviddominguez.dev",
+              name: "Luisa Hernández",
+              jobTitle: "Senior AI & Backend Engineer",
+              url: "https://luisahernandez.dev",
+              email: "mailto:lmhm0928@gmail.com",
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Bogotá",
+                addressCountry: "CO",
+              },
               sameAs: [
-                "https://github.com/daviddominguezh/",
-                "https://www.linkedin.com/in/daviddominguez",
+                "https://www.linkedin.com/in/lmhm0928",
               ],
               knowsAbout: [
-                "TypeScript",
-                "React",
-                "Node.js",
+                "Generative AI",
+                "LLM Integration",
                 "AI Agents",
-                "LLM Routing",
+                "LangGraph",
+                "LangChain",
+                "RAG Pipelines",
+                "Prompt Engineering",
+                "Model Context Protocol",
                 "Python",
-                "Docker",
-                "Kubernetes",
+                "Node.js",
+                "TypeScript",
+                "AWS",
               ],
             }),
           }}

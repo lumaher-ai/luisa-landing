@@ -16,116 +16,74 @@ export interface Company {
 
 export const COMPANIES: Company[] = [
   {
-    name: "Closer AI",
-    location: "Bogot\u00e1",
+    name: "Closer",
+    location: "Bogotá",
     accentColor: "rgb(130, 230, 170)",
     metrics: [
-      { value: "12x", label: "Inference Cut" },
-      { value: "20+", label: "LLM Providers" },
-      { value: "<1s", label: "Latency" },
+      { value: "10K+", label: "Daily Conversations" },
+      { value: "70%", label: "Handled by Agents" },
+      { value: "$25K", label: "MRR from Zero" },
     ],
     roles: [
       {
-        title: "CTO",
-        period: "Sept 2025 \u2014 Present",
+        title: "Founding AI Engineer",
+        period: "Aug 2025 — Present",
         description:
-          "Most AI projects fail on cost before they scale. Architected and shipped an AI sales agent from zero, reducing per-conversation cost from $0.25 to $0.02 (12x) while sustaining sub-second response times. Built a routing layer across 20+ LLM providers that dynamically balances cost and quality per conversation turn. Own hiring, technical budget, product roadmap, and report directly to investors.",
+          "Architected an AI-powered WhatsApp platform from concept to production — now handling 10k+ daily conversations and driving the company to $25K MRR. Designed autonomous agents in Python and LangGraph that resolve 60% of customer inquiries with no human in the loop, grounded on production RAG pipelines and vector search to keep outputs hallucination-free. Built the multi-tenant Node.js + AWS backend behind 5X growth with zero-downtime deploys, plus the CI/CD, evaluation, and observability layer that tracks agent cost, latency, and quality. Grew and led the engineering team from 2 to 8.",
       },
     ],
   },
   {
-    name: "MercadoLibre",
-    location: "Bogot\u00e1",
-    accentColor: "rgb(255, 210, 80)",
+    name: "Globant",
+    location: "Bogotá",
+    accentColor: "rgb(120, 205, 185)",
     metrics: [
-      { value: "800K+", label: "Users Scaled" },
-      { value: "99.9%", label: "Uptime Held" },
-      { value: "$0", label: "SLA Penalties" },
+      { value: "20K+", label: "Daily Active Users" },
+      { value: "35%", label: "Faster Responses" },
+      { value: "80%", label: "Test Coverage" },
     ],
     roles: [
       {
-        title: "Technical Lead",
-        period: "May 2024 \u2014 Sept 2025",
+        title: "Senior Software Engineer",
+        period: "Jan 2024 — Aug 2025",
         description:
-          "Led a 10-person engineering team that built and scaled the Affiliates program within MercadoLibre\u2019s ecosystem from first user to 800K+, with zero SLA breaches across 16 months. The program grew to contribute 1% of MercadoLibre\u2019s global revenue. Responsible for core architecture decisions, sprint delivery, and team growth.",
+          "Led full-stack development for enterprise products serving 20k+ daily active users. Optimized backend APIs and data-fetching strategies to cut payload sizes and improve system response times by 35%. Architected modular component libraries and shared business logic adopted by 5 engineering teams, cutting their development time by 30%. Drove testing culture from 45% to 80% automated coverage with Jest and Vitest, and mentored 3 junior engineers on system architecture and delivery.",
       },
     ],
   },
   {
-    name: "Agua",
-    location: "Bogot\u00e1",
-    accentColor: "rgb(200, 200, 220)",
+    name: "NICE Actimize",
+    location: "Bogotá",
+    accentColor: "rgb(255, 190, 95)",
     metrics: [
-      { value: "~$0", label: "Infra Cost" },
-      { value: "2", label: "Custom Engines" },
-      { value: "100%", label: "Client-Side" },
+      { value: "1M+", label: "Txns / Day" },
+      { value: "40%", label: "Faster Load" },
+      { value: "2x", label: "Faster Resolution" },
     ],
     roles: [
       {
-        title: "CTO",
-        period: "Aug 2022 \u2014 May 2024",
+        title: "Software Engineer",
+        period: "Oct 2022 — Dec 2023",
         description:
-          "As CTO, designed a fully client-side architecture for a low-code platform \u2014 keeping infrastructure costs near zero at scale. Built two custom engines: a 2D rendering layer for the visual editor and a transpiler that converted user designs into production code. Owned hiring, technical budget, product roadmap, and reported directly to investors.",
+          "Built and optimized high-throughput compliance systems processing 1M+ financial transactions daily. Engineered caching layers and profiled data pipelines to cut system load times by 40%. Redesigned complex incident-management workflows and data models, halving issue-resolution time. Migrated legacy codebases to modern frameworks, improving long-term maintainability and deployment speed.",
       },
     ],
   },
   {
-    name: "Mr. Pink",
-    location: "Bogot\u00e1",
-    accentColor: "rgb(255, 120, 180)",
+    name: "Avianca",
+    location: "Bogotá",
+    accentColor: "rgb(240, 100, 110)",
     metrics: [
-      { value: "2x", label: "Output Velocity" },
-      { value: "6", label: "Engineers Led" },
-      { value: "1", label: "Enterprise Retained" },
+      { value: "400+", label: "Internal Users" },
+      { value: "30%", label: "Report Accuracy" },
+      { value: "Airline", label: "Wide Deploy" },
     ],
     roles: [
       {
-        title: "Lead Developer",
-        period: "Dec 2021 \u2014 Aug 2022",
+        title: "Software Engineer",
+        period: "Jul 2021 — Jul 2022",
         description:
-          "Served as the primary technical lead for the agency\u2019s largest enterprise account, building direct trust with their CTO. Led a team of 6 engineers delivering their core platform rebuild.",
-      },
-      {
-        title: "Senior Developer",
-        period: "Aug 2021 \u2014 Dec 2021",
-        description:
-          "Diagnosed a delivery bottleneck across client projects and built an automated scaffolding platform that cut project setup time in half, compressing timelines across the full portfolio.",
-      },
-    ],
-  },
-  {
-    name: "Credibanco",
-    location: "Bogot\u00e1",
-    accentColor: "rgb(180, 130, 255)",
-    metrics: [
-      { value: "10x", label: "Dev Pool" },
-      { value: "1000s", label: "Terminals" },
-      { value: "C\u2192Python", label: "Stack Opened" },
-    ],
-    roles: [
-      {
-        title: "Senior Web Developer",
-        period: "Dec 2020 \u2014 Aug 2021",
-        description:
-          "Credibanco\u2019s proprietary POS hardware required C \u2014 capping terminal development to a small specialist team. Built a Python-to-C transpiler that opened POS development to the company\u2019s broader Python developer base. Then led the deployment rollout across thousands of payment terminals nationwide.",
-      },
-    ],
-  },
-  {
-    name: "Other dev jobs",
-    location: "Bogot\u00e1",
-    accentColor: "rgb(100, 180, 255)",
-    metrics: [
-      { value: "10+", label: "Projects" },
-      { value: "2+", label: "Years" },
-      { value: "3", label: "Core Stack" },
-    ],
-    roles: [
-      {
-        title: "Developer",
-        period: "Oct 2018 \u2014 Dec 2020",
-        description:
-          "Built production applications in TypeScript, React, and Node.js across 10+ client projects \u2014 from MVPs to full-stack platforms \u2014 developing the full-stack depth that informed later architecture work at scale.",
+          "Developed data-intensive analytics and operational tools deployed airline-wide. Standardized and refactored core data pipelines, improving critical reporting accuracy by 30%. Built robust internal tooling adopted by 400+ users across operations and logistics, and introduced unit testing and automated QA practices that improved release stability.",
       },
     ],
   },

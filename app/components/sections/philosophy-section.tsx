@@ -10,19 +10,19 @@ interface PhilosophyItem {
 
 const PRINCIPLES: PhilosophyItem[] = [
   {
-    title: "Adoption is an engineering problem.",
+    title: "Production is the only benchmark that counts.",
     description:
-      "The hardest tools to adopt are the ones that ignore how people already work. I build to fit existing workflows, existing habits, existing mental models \u2014 because the hidden cost of software is never the license. It\u2019s the change management, the resistance, the workarounds your team builds around tools they were told to use.",
+      "A demo agent and a production agent are different animals. One impresses in a controlled room; the other survives real users, real edge cases, and real cost at 10k+ conversations a day. I build for the second one from the start \u2014 multi-tenant, observable, zero-downtime \u2014 because that\u2019s the only version that actually moves the business.",
   },
   {
-    title: "Speed is a strategy. Waiting is a decision.",
+    title: "Ship fast, but ship it grounded.",
     description:
-      "Every week a tool isn\u2019t in production is a week your team is working around the problem instead of past it. I optimize for sustainable velocity \u2014 scoped releases, real users, real feedback \u2014 without sacrificing reliability. The compounding cost of delay is invisible until it isn\u2019t. But so is the cost of shipping something that breaks trust.",
+      "GenAI that hallucinates in front of a customer doesn\u2019t save time \u2014 it burns trust you can\u2019t buy back. I pair aggressive execution with the discipline that makes it safe: RAG grounding, evaluation harnesses, and observability on cost, latency, and quality. Speed and rigor aren\u2019t a trade-off. The rigor is what lets you keep shipping.",
   },
   {
-    title: "Privacy is a design constraint, not an afterthought.",
+    title: "AI features earn their keep in revenue and retention.",
     description:
-      "I treat data privacy as an architectural decision, not a compliance checkbox. At Agua, the fully client-side architecture meant zero data egress \u2014 both a product requirement and a privacy guarantee. At Closer AI, I face the inverse problem: third-party LLM calls are inherently data-leaving events. Privacy there means governing what leaves, where it goes, and how long it\u2019s retained. The approach changes with the problem. The discipline doesn\u2019t.",
+      "The point of an autonomous agent isn\u2019t that it\u2019s clever \u2014 it\u2019s that it resolves 60% of inquiries without a human, or takes a company from zero to $25K MRR. I tie engineering decisions to outcomes I can measure, and I own them end to end: architecture, delivery, the team that ships it, and the numbers it produces.",
   },
 ];
 

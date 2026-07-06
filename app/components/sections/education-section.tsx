@@ -16,13 +16,35 @@ export function EducationSection() {
             <span className="mt-1 h-5 w-5 shrink-0 rounded-full bg-[var(--gray-3)]" />
             <div>
               <div className="font-medium text-[var(--gray-12)]">
-                Computer Science & Software Engineering (B.S.)
+                Economics, B.A.
               </div>
               <div className="mt-0.5 font-mono text-sm text-[var(--gray-6)]">
-                Jan 2018 — Dec 2022
+                Jan 2017 — May 2021
               </div>
               <div className="mt-1 font-mono text-xs text-[var(--gray-8)]">
-                QS Top 200 Worldwide · #1 in Colombia · Top 10 Latin America · ABET Accredited
+                QS Top 200 Worldwide · #1 in Colombia · Top 10 Latin America
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="my-8">
+          <header className="mb-4 border-b border-[var(--gray-3)] py-2 text-xl font-medium tracking-tight text-[var(--gray-7)]">
+            <span className="mr-1 text-[var(--gray-12)]">Tecnológico de Monterrey</span>
+            /&nbsp;Mexico
+          </header>
+
+          <div className="my-4 flex items-start gap-4">
+            <span className="mt-1 h-5 w-5 shrink-0 rounded-full bg-[var(--gray-3)]" />
+            <div>
+              <div className="font-medium text-[var(--gray-12)]">
+                Computer Science (Minor)
+              </div>
+              <div className="mt-0.5 font-mono text-sm text-[var(--gray-6)]">
+                Aug 2019 — Jul 2020
+              </div>
+              <div className="mt-1 font-mono text-xs text-[var(--gray-8)]">
+                Exchange · #1 private university in Latin America (QS)
               </div>
             </div>
           </div>
