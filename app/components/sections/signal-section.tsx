@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { asset } from "@/app/lib/base-path";
 import { SignalSphereCanvas } from "../brain/signal-sphere-canvas";
 
 interface SocialLink {
@@ -8,7 +9,7 @@ interface SocialLink {
 
 const SOCIALS: SocialLink[] = [
   { label: "LinkedIn", href: "https://www.linkedin.com/in/lmhm0928" },
-  { label: "Download CV", href: "/cv-luisa_hernandez.pdf" },
+  { label: "Download CV", href: asset("/cv-luisa_hernandez.pdf") },
 ];
 
 export function SignalSection() {

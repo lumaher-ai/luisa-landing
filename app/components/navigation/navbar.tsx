@@ -1,3 +1,4 @@
+import { asset } from "@/app/lib/base-path";
 import { MobileNav } from "./mobile-nav";
 
 export function Navbar() {
@@ -22,7 +23,7 @@ export function Navbar() {
       </div>
 
       <a
-        href="/cv-luisa_hernandez.pdf"
+        href={asset("/cv-luisa_hernandez.pdf")}
         download
         className="font-mono text-[11px] tracking-[0.06em] text-[var(--gray-7)] transition-colors duration-200 hover:text-[var(--gray-11)]"
       >

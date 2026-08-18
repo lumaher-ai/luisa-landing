@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
 
-export const runtime = "edge";
+export const dynamic = "force-static";
+
 export const alt: string = "Luisa Hern\u00e1ndez \u2014 Senior AI Engineer shipping production GenAI agents that handle 10k+ conversations a day";
 export const size: { width: number; height: number } = { width: 1200, height: 630 };
 export const contentType: string = "image/png";

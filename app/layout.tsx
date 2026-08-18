@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { siteUrl } from "@/app/lib/base-path";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,11 +22,11 @@ export const metadata: Metadata = {
   title: "Luisa Hern\u00e1ndez \u2014 Senior AI Engineer",
   description:
     "Senior AI & Backend Engineer who ships production GenAI from 0 to 1. Built autonomous LangGraph agents that handle 10k+ daily WhatsApp conversations and resolve 60% of inquiries at Closer, taking the company to $25K MRR. Expert in Python, Node.js, RAG pipelines, and multi-agent LLM systems on AWS.",
-  metadataBase: new URL("https://luisahernandez.dev"),
+  metadataBase: new URL(siteUrl),
   alternates: {
     canonical: "/",
   },
-  authors: [{ name: "Luisa Hern\u00e1ndez", url: "https://luisahernandez.dev" }],
+  authors: [{ name: "Luisa Hern\u00e1ndez", url: siteUrl }],
   robots: {
     index: true,
     follow: true,
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
     title: "Luisa Hern\u00e1ndez \u2014 Senior AI Engineer",
     description:
       "Senior AI Engineer shipping production GenAI from 0 to 1. Autonomous LangGraph agents handling 10k+ daily conversations, 60% resolved without a human, $25K MRR from zero. Python \u00b7 Node.js \u00b7 RAG \u00b7 multi-agent LLM systems on AWS.",
-    url: "https://luisahernandez.dev",
+    url: siteUrl,
     siteName: "Luisa Hern\u00e1ndez",
     locale: "en_US",
     images: [
@@ -74,7 +75,7 @@ export default function RootLayout({
               "@type": "Person",
               name: "Luisa Hernández",
               jobTitle: "Senior AI & Backend Engineer",
-              url: "https://luisahernandez.dev",
+              url: siteUrl,
               email: "mailto:lmhm0928@gmail.com",
               address: {
                 "@type": "PostalAddress",
