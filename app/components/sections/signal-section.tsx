@@ -46,7 +46,7 @@ export function SignalSection() {
             style={{ opacity: 0.65 }}
           >
             <Image
-              src="/luisa.png"
+              src={asset("/luisa.png")}
               alt="Luisa Hernández"
               width={840}
               height={840}
