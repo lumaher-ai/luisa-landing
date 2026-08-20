@@ -38,10 +38,10 @@ export function EducationSection() {
             <span className="mt-1 h-5 w-5 shrink-0 rounded-full bg-[var(--gray-3)]" />
             <div>
               <div className="font-medium text-[var(--gray-12)]">
-                Computer Science (Minor)
+                Computer Science (Associate Degree)
               </div>
               <div className="mt-0.5 font-mono text-sm text-[var(--gray-6)]">
-                Aug 2019 — Jul 2020
+                Aug 2019 — Jul 2021
               </div>
               <div className="mt-1 font-mono text-xs text-[var(--gray-8)]">
                 Exchange · #1 private university in Latin America (QS)
